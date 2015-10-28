@@ -1,6 +1,3 @@
-/**
- * 
- */
 package edu.ncsu.csc216.bug_tracker.tracker;
 
 import java.util.List;

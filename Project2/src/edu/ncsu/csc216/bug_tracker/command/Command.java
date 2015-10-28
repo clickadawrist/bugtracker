@@ -20,23 +20,14 @@ public class Command {
 	/**
 	 * Nested CommandValue Enumeration
 	 */
-	public enum CommandValue() {
-		public static enum CommandValue { VOTE, POSSESSION, RESOLVED, VERIFIED, REOPEN, CONFIRM }
-		
-		//not finished	
-		public CommandValue() {
-			
-		}
+	public static enum CommandValue { 
+		VOTE, POSSESSION, RESOLVED, VERIFIED, REOPEN, CONFIRM	
 	}
 	
-	public enum Resolution() {
-		public static enum Resolution { FIXED, DUPLICATE, WONTFIX, WORKSFORME }
-		
-		//not finished
-		public Resolution(){
-			
-		}
+	public static enum Resolution { 
+		FIXED, DUPLICATE, WONTFIX, WORKSFORME 
 	}
+		
 	
 	public CommandValue getCommand() {
 		
