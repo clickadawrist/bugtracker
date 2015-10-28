@@ -105,7 +105,7 @@ public class TrackedBug {
 		
 	}
 	
-	public class UnconfirmedState() implements BugState
+	private class UnconfirmedState() implements BugState
 	{
 		private UnconfirmedState()
 		{
@@ -123,7 +123,7 @@ public class TrackedBug {
 		}
 	}
 	
-	public class NewState() implements BugState
+	private class NewState() implements BugState
 	{
 		private NewState()
 		{
@@ -141,7 +141,7 @@ public class TrackedBug {
 		}
 	}
 	
-	public class AssignedState() implements BugState
+	private class AssignedState() implements BugState
 	{
 		private AssignedState()
 		{
@@ -159,7 +159,7 @@ public class TrackedBug {
 		}
 	}
 	
-	public class ResolvedState() implements BugState
+	private class ResolvedState() implements BugState
 	{
 		private ResolvedState()
 		{
@@ -177,7 +177,7 @@ public class TrackedBug {
 		}
 	}
 	
-	public class ClosedState() implements BugState
+	private class ClosedState() implements BugState
 	{
 		private ClosedState()
 		{
@@ -195,7 +195,7 @@ public class TrackedBug {
 		}
 	}
 	
-	public class ReopenState() implements BugState
+	private class ReopenState() implements BugState
 	{
 		private ReopenState()
 		{
