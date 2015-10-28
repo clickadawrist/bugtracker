@@ -19,6 +19,10 @@ public class Command {
 	private Resolution resolution;
 	
 	/**
+	 * Throws an Illegal Argument Exception if the command value is null,
+	 * if the command value is resolved and the resolution is null,
+	 * or if the command value is possession and the developer ID is null or an empty
+	 * String.
 	 * 
 	 * @param c
 	 * @param developerId
@@ -26,6 +30,21 @@ public class Command {
 	 * @param note
 	 */
 	public Command(CommandValue c, String developerId, Resolution resolution, String note) {
+		if(c == null)
+		{
+			throw new IllegalArgumentException();
+		}
+		
+		if(c == CommandValue.RESOLVED && resolution == null)
+		{
+			throw new IllegalArgumentException();
+		}
+		
+		if(c == CommandValue.POSSESSION && developerId == null || developerId == "")
+		{
+			throw new IllegalArgumentException();
+		}
+		
 		this.c = c;
 		this.developerId = developerId;
 		this.note = note;
