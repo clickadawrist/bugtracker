@@ -3,6 +3,7 @@ package edu.ncsu.csc216.bug_tracker.bug;
 import java.util.ArrayList;
 
 import edu.ncsu.csc216.bug_tracker.command.Command;
+import edu.ncsu.csc216.bug_tracker.xml.Bug;
 
 /**
  * @author Manaka Green and Paul Hawkins
