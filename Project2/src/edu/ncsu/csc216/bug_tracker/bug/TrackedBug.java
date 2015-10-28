@@ -1,8 +1,8 @@
-package edu.ncsu.csc216.bug_tracker.tracker;
+package edu.ncsu.csc216.bug_tracker.bug;
 
 import java.util.ArrayList;
 
-import edu.ncsu.csc216.bug_tracker.bug.BugState;
+import edu.ncsu.csc216.bug_tracker.command.Command;
 
 /**
  * @author Manaka Green and Paul Hawkins
@@ -103,6 +103,114 @@ public class TrackedBug {
 	
 	public static void setCounter(int g) {
 		
+	}
+	
+	public class UnconfirmedState() implements BugState
+	{
+		private UnconfirmedState()
+		{
+			
+		}
+		
+		public void updateState(Command c)
+		{
+			
+		}
+		
+		public String getStateName()
+		{
+			
+		}
+	}
+	
+	public class NewState() implements BugState
+	{
+		private NewState()
+		{
+			
+		}
+		
+		public void updateState(Command c)
+		{
+			
+		}
+		
+		public String getStateName()
+		{
+			
+		}
+	}
+	
+	public class AssignedState() implements BugState
+	{
+		private AssignedState()
+		{
+			
+		}
+		
+		public void updateState(Command c)
+		{
+			
+		}
+		
+		public String getStateName()
+		{
+			
+		}
+	}
+	
+	public class ResolvedState() implements BugState
+	{
+		private ResolvedState()
+		{
+			
+		}
+		
+		public void updateState(Command c)
+		{
+			
+		}
+		
+		public String getStateName()
+		{
+			
+		}
+	}
+	
+	public class ClosedState() implements BugState
+	{
+		private ClosedState()
+		{
+			
+		}
+		
+		public void updateState(Command c)
+		{
+			
+		}
+		
+		public String getStateName()
+		{
+			
+		}
+	}
+	
+	public class ReopenState() implements BugState
+	{
+		private ReopenState()
+		{
+			
+		}
+		
+		public void updateState(Command c)
+		{
+			
+		}
+		
+		public String getStateName()
+		{
+			
+		}
 	}
 	
 }
