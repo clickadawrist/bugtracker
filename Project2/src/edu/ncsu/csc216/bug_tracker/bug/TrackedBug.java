@@ -20,120 +20,196 @@ public class TrackedBug
 	private int votes;
 	private boolean confirmed;
 	private ArrayList<String> notes;
-	private final BugState unconfirmedState;
-	private final BugState newState; //did they mean to have an underscore or space between new and State?
-	private final BugState assignedState;
-	private final BugState resolvedState;
-	private final BugState reopenState;
-	private final BugState closedState;
-	public static final String UNCONFIRMED_NAME;
-	public static final String NEW_NAME;
-	public static final String ASSIGNED_NAME;
-	public static final String RESOLVED_NAME;
-	public static final String REOPEN_NAME;
-	public static final String CLOSED_NAME;
-	public static final int VOTE_THRESHOLD;
+	private final BugState unconfirmedState = new UnconfirmedState();
+	private final BugState newState = new NewState(); 
+	private final BugState assignedState = new AssignedState();
+	private final BugState resolvedState = new ResolvedState();
+	private final BugState reopenState = new ReopenState();
+	private final BugState closedState = new ClosedState();
+	public static final String UNCONFIRMED_NAME = "UnconfirmedState";
+	public static final String NEW_NAME = "NewState";
+	public static final String ASSIGNED_NAME = "AssignedState";
+	public static final String RESOLVED_NAME = "ResolvedState";
+	public static final String REOPEN_NAME = "ReopenState";
+	public static final String CLOSED_NAME = "ClosedState";
+	public static final int VOTE_THRESHOLD = 3;
 	private static int counter;
 	private Resolution resolution;
 	private BugList bugs;
 	
-	public TrackedBug(String a, String b) 
+	/**
+	 * 
+	 * @param summary
+	 * @param reporter
+	 */
+	public TrackedBug(String summary, String reporter) 
 	{
-		
+		this.summary = summary;
+		this.reporter = reporter;
 	}
 	
-	public TrackedBug(Bug c) 
+	/**
+	 * 
+	 * @param z
+	 */
+	public TrackedBug(Bug z) 
 	{
-		
+		//call first constructor?
+		//c = newTrackedBug(summary reporter)
 	}
 	
+	/**
+	 * 
+	 */
 	public static void incrementCounter() 
 	{
-		
+//////////////?????		
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getBugId() 
 	{
-		
+		return this.bugId;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public BugState getState() 
 	{
-		
+		return this.state;
 	}
 	
+	/**
+	 * 
+	 * @param d
+	 */
 	private void setSate(String d) 
 	{
-		
+//////////////?????	
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public Resolution getResolution() 
 	{
-		
+		return this.resolution;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getResolutionString() 
 	{
+		return this.resolution.toString();
 		
 	}
 	
+	/**
+	 * 
+	 * @param e
+	 */
 	private void setResolution(String e) 
 	{
-		
+//////////////?????		
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getOwner() 
 	{
-		
+//////////////?????
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getSummary() 
 	{
-		
+		return this.summary;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getReporter() 
 	{
-		
+		return this.reporter;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public ArrayList<String> getNotes() 
 	{
-		
+		return this.notes;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getNotesString() 
 	{
-		
+		return this.notes.toString();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean isConfirmed() 
 	{
-		
+		return this.confirmed;
 	}
 	
+	/**
+	 * 
+	 * @param f
+	 */
 	public void update(Command f) 
 	{
-		
+//////////////?????
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public Bug getXMLBug() 
 	{
-		
+//////////////?????
 	}
 	
+	/**
+	 * 
+	 * @param g
+	 */
 	public static void setCounter(int g) 
 	{
-		
+//////////////?????		
 	}
 	
+	/**
+	 * 
+	 */
 	private class UnconfirmedState implements BugState
 	{
-		private UnconfirmedState()
-		{
-			
-		}
-		
+		/**
+		 * 
+		 */
 		public void updateState(Command c)
 		{
 			switch(c.getCommand())
@@ -165,19 +241,25 @@ public class TrackedBug
 			}
 		}
 		
+		/**
+		 * 
+		 */
 		public String getStateName()
 		{
-			return "UnconfirmedState";
+			return UNCONFIRMED_NAME;
 		}
 	}
 	
+	/**
+	 * 
+	 * 
+	 *
+	 */
 	private class NewState implements BugState
-	{
-		private NewState()
-		{
-			
-		}
-		
+	{	
+		/**
+		 * 
+		 */
 		public void updateState(Command c)
 		{
 			switch(c.getCommand()){
@@ -208,19 +290,25 @@ public class TrackedBug
 			}
 		}
 		
+		/**
+		 * 
+		 */
 		public String getStateName()
 		{
-			return "NewState";
+			return NEW_NAME;
 		}
 	}
 	
+	/**
+	 * 
+	 * 
+	 *
+	 */
 	private class AssignedState implements BugState
-	{
-		private AssignedState()
-		{
-			
-		}
-		
+	{	
+		/**
+		 * 
+		 */
 		public void updateState(Command c)
 		{
 			switch(c.getCommand()) 
@@ -252,19 +340,25 @@ public class TrackedBug
 			}
 		}
 		
+		/**
+		 * 
+		 */
 		public String getStateName()
 		{
-			return "AssignedState";
+			return ASSIGNED_NAME;
 		}
 	}
 	
+	/**
+	 * 
+	 * 
+	 *
+	 */
 	private class ResolvedState implements BugState
-	{
-		private ResolvedState()
-		{
-			
-		}
-		
+	{	
+		/**
+		 * 
+		 */
 		public void updateState(Command c)
 		{
 			switch(c.getCommand())
@@ -296,19 +390,25 @@ public class TrackedBug
 			}
 		}
 		
+		/**
+		 * 
+		 */
 		public String getStateName()
 		{
-			return "ResolvedState";
+			return RESOLVED_NAME;
 		}
 	}
 	
+	/**
+	 * 
+	 *  
+	 *
+	 */
 	private class ClosedState implements BugState
 	{
-		private ClosedState()
-		{
-			
-		}
-		
+		/**
+		 * 
+		 */
 		public void updateState(Command c)
 		{
 			switch(c.getCommand())
@@ -340,19 +440,26 @@ public class TrackedBug
 			}
 		}
 		
+		/**
+		 * 
+		 */
 		public String getStateName()
 		{
-			return "ResolvedState";
+			return CLOSED_NAME;
 		}
 	}
 	
+	/**
+	 * 
+	 * 
+	 *
+	 */
 	private class ReopenState implements BugState
 	{
-		private ReopenState()
-		{
-			
-		}
 		
+		/**
+		 * 
+		 */
 		public void updateState(Command c)
 		{
 			switch(c.getCommand())
@@ -384,9 +491,12 @@ public class TrackedBug
 			}
 		}
 		
+		/**
+		 * 
+		 */
 		public String getStateName()
 		{
-			return "ReopenState";
+			return REOPEN_NAME;
 		}
 	}
 }
