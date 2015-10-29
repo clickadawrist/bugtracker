@@ -3,6 +3,7 @@ package edu.ncsu.csc216.bug_tracker.bug;
 import java.util.ArrayList;
 
 import edu.ncsu.csc216.bug_tracker.command.Command;
+import edu.ncsu.csc216.bug_tracker.command.Command.Resolution;
 import edu.ncsu.csc216.bug_tracker.xml.Bug;
 
 /**
@@ -40,7 +41,6 @@ public class TrackedBug {
 		
 	}
 	
-	//have to make nested classes one day...
 	
 	public static void incrementCounter() {
 		
@@ -106,7 +106,7 @@ public class TrackedBug {
 		
 	}
 	
-	private class UnconfirmedState() implements BugState
+	private class UnconfirmedState implements BugState
 	{
 		private UnconfirmedState()
 		{
@@ -115,7 +115,32 @@ public class TrackedBug {
 		
 		public void updateState(Command c)
 		{
-			
+			switch(c.getCommand()){
+				case VOTE:
+				{
+					break;
+				}
+				case CONFIRM:
+				{
+					break;
+				}
+				case POSSESSION:
+				{
+					throw new UnsupportedOperationException();
+				}
+				case REOPEN:
+				{
+					throw new UnsupportedOperationException();
+				}
+				case RESOLVED:
+				{
+					throw new UnsupportedOperationException();
+				}
+				default:
+				{
+					throw new UnsupportedOperationException();
+				}
+			}
 		}
 		
 		public String getStateName()
@@ -124,7 +149,7 @@ public class TrackedBug {
 		}
 	}
 	
-	private class NewState() implements BugState
+	private class NewState implements BugState
 	{
 		private NewState()
 		{
@@ -133,7 +158,32 @@ public class TrackedBug {
 		
 		public void updateState(Command c)
 		{
-			
+			switch(c.getCommand()){
+			case VOTE:
+			{
+				throw new UnsupportedOperationException();
+			}
+			case CONFIRM:
+			{
+				throw new UnsupportedOperationException();
+			}
+			case POSSESSION:
+			{
+				break;
+			}
+			case REOPEN:
+			{
+				throw new UnsupportedOperationException();
+			}
+			case RESOLVED:
+			{
+				throw new UnsupportedOperationException();
+			}
+			default:
+			{
+				throw new UnsupportedOperationException();
+			}
+		}
 		}
 		
 		public String getStateName()
@@ -142,7 +192,7 @@ public class TrackedBug {
 		}
 	}
 	
-	private class AssignedState() implements BugState
+	private class AssignedState implements BugState
 	{
 		private AssignedState()
 		{
@@ -151,7 +201,32 @@ public class TrackedBug {
 		
 		public void updateState(Command c)
 		{
-			
+			switch(c.getCommand()){
+			case VOTE:
+			{
+				throw new UnsupportedOperationException();
+			}
+			case CONFIRM:
+			{
+				throw new UnsupportedOperationException();
+			}
+			case POSSESSION:
+			{
+				throw new UnsupportedOperationException();
+			}
+			case REOPEN:
+			{
+				throw new UnsupportedOperationException();
+			}
+			case RESOLVED:
+			{
+				break;
+			}
+			default:
+			{
+				break;
+			}
+		}
 		}
 		
 		public String getStateName()
@@ -160,7 +235,7 @@ public class TrackedBug {
 		}
 	}
 	
-	private class ResolvedState() implements BugState
+	private class ResolvedState implements BugState
 	{
 		private ResolvedState()
 		{
@@ -169,7 +244,32 @@ public class TrackedBug {
 		
 		public void updateState(Command c)
 		{
-			
+			switch(c.getCommand()){
+			case VOTE:
+			{
+				throw new UnsupportedOperationException();
+			}
+			case CONFIRM:
+			{
+				throw new UnsupportedOperationException();
+			}
+			case POSSESSION:
+			{
+				throw new UnsupportedOperationException();
+			}
+			case REOPEN:
+			{
+				break;
+			}
+			case RESOLVED:
+			{
+				throw new UnsupportedOperationException();
+			}
+			default:
+			{
+				break;
+			}
+		}
 		}
 		
 		public String getStateName()
@@ -178,7 +278,7 @@ public class TrackedBug {
 		}
 	}
 	
-	private class ClosedState() implements BugState
+	private class ClosedState implements BugState
 	{
 		private ClosedState()
 		{
@@ -187,7 +287,32 @@ public class TrackedBug {
 		
 		public void updateState(Command c)
 		{
-			
+			switch(c.getCommand()){
+			case VOTE:
+			{
+				throw new UnsupportedOperationException();
+			}
+			case CONFIRM:
+			{
+				throw new UnsupportedOperationException();
+			}
+			case POSSESSION:
+			{
+				throw new UnsupportedOperationException();
+			}
+			case REOPEN:
+			{
+				break;
+			}
+			case RESOLVED:
+			{
+				throw new UnsupportedOperationException();
+			}
+			default:
+			{
+				throw new UnsupportedOperationException();
+			}
+		}
 		}
 		
 		public String getStateName()
@@ -196,7 +321,7 @@ public class TrackedBug {
 		}
 	}
 	
-	private class ReopenState() implements BugState
+	private class ReopenState implements BugState
 	{
 		private ReopenState()
 		{
@@ -205,7 +330,32 @@ public class TrackedBug {
 		
 		public void updateState(Command c)
 		{
-			
+			switch(c.getCommand()){
+			case VOTE:
+			{
+				throw new UnsupportedOperationException();
+			}
+			case CONFIRM:
+			{
+				throw new UnsupportedOperationException();
+			}
+			case POSSESSION:
+			{
+				break;
+			}
+			case REOPEN:
+			{
+				throw new UnsupportedOperationException();
+			}
+			case RESOLVED:
+			{
+				break;
+			}
+			default:
+			{
+				break;
+			}
+		}
 		}
 		
 		public String getStateName()
