@@ -4,13 +4,15 @@ import java.util.ArrayList;
 
 import edu.ncsu.csc216.bug_tracker.command.Command;
 import edu.ncsu.csc216.bug_tracker.command.Command.Resolution;
+import edu.ncsu.csc216.bug_tracker.tracker.BugList;
 import edu.ncsu.csc216.bug_tracker.xml.Bug;
 
 /**
  * @author Manaka Green and Paul Hawkins
  *
  */
-public class TrackedBug {
+public class TrackedBug 
+{
 	private int bugId;
 	private BugState state;
 	private String summary;
@@ -32,77 +34,96 @@ public class TrackedBug {
 	public static final String CLOSED_NAME;
 	public static final int VOTE_THRESHOLD;
 	private static int counter;
+	private Resolution resolution;
+	private BugList bugs;
 	
-	public TrackedBug(String a, String b) {
+	public TrackedBug(String a, String b) 
+	{
 		
 	}
 	
-	public TrackedBug(Bug c) {
+	public TrackedBug(Bug c) 
+	{
 		
 	}
 	
-	
-	public static void incrementCounter() {
+	public static void incrementCounter() 
+	{
 		
 	}
 	
-	public int getBugId() {
+	public int getBugId() 
+	{
 		
 	}
 	
-	public BugState getState() {
+	public BugState getState() 
+	{
 		
 	}
 	
-	private void setSate(String d) {
+	private void setSate(String d) 
+	{
 		
 	}
 	
-	public Resolution getResolution() {
+	public Resolution getResolution() 
+	{
 		
 	}
 	
-	public String getResolutionString() {
+	public String getResolutionString() 
+	{
 		
 	}
 	
-	private void setResolution(String e) {
+	private void setResolution(String e) 
+	{
 		
 	}
 	
-	public String getOwner() {
+	public String getOwner() 
+	{
 		
 	}
 	
-	public String getSummary() {
+	public String getSummary() 
+	{
 		
 	}
 	
-	public String getReporter() {
+	public String getReporter() 
+	{
 		
 	}
 	
-	public ArrayList<String> getNotes() {
+	public ArrayList<String> getNotes() 
+	{
 		
 	}
 	
-	public String getNotesString() {
+	public String getNotesString() 
+	{
 		
 	}
 	
-	public boolean isConfirmed() {
+	public boolean isConfirmed() 
+	{
 		
 	}
 	
-	public void update(Command f) {
+	public void update(Command f) 
+	{
 		
 	}
 	
-	public Bug getXMLBug() {
+	public Bug getXMLBug() 
+	{
 		
 	}
 	
-	public static void setCounter(int g) {
+	public static void setCounter(int g) 
+	{
 		
 	}
 	
@@ -115,7 +136,8 @@ public class TrackedBug {
 		
 		public void updateState(Command c)
 		{
-			switch(c.getCommand()){
+			switch(c.getCommand())
+			{
 				case VOTE:
 				{
 					break;
@@ -145,7 +167,7 @@ public class TrackedBug {
 		
 		public String getStateName()
 		{
-			
+			return "UnconfirmedState";
 		}
 	}
 	
@@ -159,36 +181,36 @@ public class TrackedBug {
 		public void updateState(Command c)
 		{
 			switch(c.getCommand()){
-			case VOTE:
-			{
-				throw new UnsupportedOperationException();
+				case VOTE:
+				{
+					throw new UnsupportedOperationException();
+				}
+				case CONFIRM:
+				{
+					throw new UnsupportedOperationException();
+				}
+				case POSSESSION:
+				{
+					break;
+				}
+				case REOPEN:
+				{
+					throw new UnsupportedOperationException();
+				}
+				case RESOLVED:
+				{
+					throw new UnsupportedOperationException();
+				}
+				default:
+				{
+					throw new UnsupportedOperationException();
+				}
 			}
-			case CONFIRM:
-			{
-				throw new UnsupportedOperationException();
-			}
-			case POSSESSION:
-			{
-				break;
-			}
-			case REOPEN:
-			{
-				throw new UnsupportedOperationException();
-			}
-			case RESOLVED:
-			{
-				throw new UnsupportedOperationException();
-			}
-			default:
-			{
-				throw new UnsupportedOperationException();
-			}
-		}
 		}
 		
 		public String getStateName()
 		{
-			
+			return "NewState";
 		}
 	}
 	
@@ -201,37 +223,38 @@ public class TrackedBug {
 		
 		public void updateState(Command c)
 		{
-			switch(c.getCommand()){
-			case VOTE:
+			switch(c.getCommand()) 
 			{
-				throw new UnsupportedOperationException();
+				case VOTE:
+				{
+					throw new UnsupportedOperationException();
+				}
+				case CONFIRM:
+				{
+					throw new UnsupportedOperationException();
+				}
+				case POSSESSION:
+				{
+					throw new UnsupportedOperationException();
+				}
+				case REOPEN:
+				{
+					throw new UnsupportedOperationException();
+				}
+				case RESOLVED:
+				{
+					break;
+				}
+				default:
+				{
+					break;
+				}
 			}
-			case CONFIRM:
-			{
-				throw new UnsupportedOperationException();
-			}
-			case POSSESSION:
-			{
-				throw new UnsupportedOperationException();
-			}
-			case REOPEN:
-			{
-				throw new UnsupportedOperationException();
-			}
-			case RESOLVED:
-			{
-				break;
-			}
-			default:
-			{
-				break;
-			}
-		}
 		}
 		
 		public String getStateName()
 		{
-			
+			return "AssignedState";
 		}
 	}
 	
@@ -244,37 +267,38 @@ public class TrackedBug {
 		
 		public void updateState(Command c)
 		{
-			switch(c.getCommand()){
-			case VOTE:
+			switch(c.getCommand())
 			{
-				throw new UnsupportedOperationException();
+				case VOTE:
+				{
+					throw new UnsupportedOperationException();
+				}
+				case CONFIRM:
+				{
+					throw new UnsupportedOperationException();
+				}
+				case POSSESSION:
+				{
+					throw new UnsupportedOperationException();
+				}
+				case REOPEN:
+				{
+					break;
+				}
+				case RESOLVED:
+				{
+					throw new UnsupportedOperationException();
+				}
+				default:
+				{
+					break;
+				}
 			}
-			case CONFIRM:
-			{
-				throw new UnsupportedOperationException();
-			}
-			case POSSESSION:
-			{
-				throw new UnsupportedOperationException();
-			}
-			case REOPEN:
-			{
-				break;
-			}
-			case RESOLVED:
-			{
-				throw new UnsupportedOperationException();
-			}
-			default:
-			{
-				break;
-			}
-		}
 		}
 		
 		public String getStateName()
 		{
-			
+			return "ResolvedState";
 		}
 	}
 	
@@ -287,37 +311,38 @@ public class TrackedBug {
 		
 		public void updateState(Command c)
 		{
-			switch(c.getCommand()){
-			case VOTE:
+			switch(c.getCommand())
 			{
-				throw new UnsupportedOperationException();
+				case VOTE:
+				{
+					throw new UnsupportedOperationException();
+				}
+				case CONFIRM:
+				{
+					throw new UnsupportedOperationException();
+				}
+				case POSSESSION:
+				{
+					throw new UnsupportedOperationException();
+				}
+				case REOPEN:
+				{
+					break;
+				}
+				case RESOLVED:
+				{
+					throw new UnsupportedOperationException();
+				}
+				default:
+				{
+					throw new UnsupportedOperationException();
+				}
 			}
-			case CONFIRM:
-			{
-				throw new UnsupportedOperationException();
-			}
-			case POSSESSION:
-			{
-				throw new UnsupportedOperationException();
-			}
-			case REOPEN:
-			{
-				break;
-			}
-			case RESOLVED:
-			{
-				throw new UnsupportedOperationException();
-			}
-			default:
-			{
-				throw new UnsupportedOperationException();
-			}
-		}
 		}
 		
 		public String getStateName()
 		{
-			
+			return "ResolvedState";
 		}
 	}
 	
@@ -330,38 +355,38 @@ public class TrackedBug {
 		
 		public void updateState(Command c)
 		{
-			switch(c.getCommand()){
-			case VOTE:
+			switch(c.getCommand())
 			{
-				throw new UnsupportedOperationException();
+				case VOTE:
+				{
+					throw new UnsupportedOperationException();
+				}
+				case CONFIRM:
+				{
+					throw new UnsupportedOperationException();
+				}
+				case POSSESSION:
+				{
+					break;
+				}
+				case REOPEN:
+				{
+					throw new UnsupportedOperationException();
+				}
+				case RESOLVED:
+				{
+					break;
+				}
+				default:
+				{
+					break;
+				}
 			}
-			case CONFIRM:
-			{
-				throw new UnsupportedOperationException();
-			}
-			case POSSESSION:
-			{
-				break;
-			}
-			case REOPEN:
-			{
-				throw new UnsupportedOperationException();
-			}
-			case RESOLVED:
-			{
-				break;
-			}
-			default:
-			{
-				break;
-			}
-		}
 		}
 		
 		public String getStateName()
 		{
-			
+			return "ReopenState";
 		}
 	}
-	
 }
