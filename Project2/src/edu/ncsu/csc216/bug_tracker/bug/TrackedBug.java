@@ -54,8 +54,8 @@ public class TrackedBug
 	 */
 	public TrackedBug(Bug z) 
 	{
-		//call first constructor?
-		//c = newTrackedBug(summary reporter)
+		this.summary = z.getSummary();
+		this.reporter = z.getReporter();
 	}
 	
 	/**
@@ -63,7 +63,7 @@ public class TrackedBug
 	 */
 	public static void incrementCounter() 
 	{
-//////////////?????		
+		counter++;
 	}
 	
 	/**
@@ -90,7 +90,7 @@ public class TrackedBug
 	 */
 	private void setSate(String d) 
 	{
-//////////////?????	
+		
 	}
 	
 	/**
@@ -117,8 +117,23 @@ public class TrackedBug
 	 * @param e
 	 */
 	private void setResolution(String e) 
-	{
-//////////////?????		
+	{	
+		if(e == Command.R_DUPLICATE)
+		{
+			this.resolution = Resolution.DUPLICATE;
+		}
+		else if(e == Command.R_FIXED)
+		{
+			this.resolution = Resolution.FIXED;
+		}
+		else if(e == Command.R_WONTFIX)
+		{
+			this.resolution = Resolution.WONTFIX;
+		}
+		else if(e == Command.R_WORKSFORME)
+		{
+			this.resolution = Resolution.WORKSFORME;
+		}
 	}
 	
 	/**
@@ -199,7 +214,7 @@ public class TrackedBug
 	 */
 	public static void setCounter(int g) 
 	{
-//////////////?????		
+		counter = g;
 	}
 	
 	/**
