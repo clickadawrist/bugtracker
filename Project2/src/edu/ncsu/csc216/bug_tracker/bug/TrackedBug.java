@@ -88,9 +88,32 @@ public class TrackedBug
 	 * 
 	 * @param d
 	 */
-	private void setSate(String d) 
+	private void setSate(String e) 
 	{
-		
+		if(e == UNCONFIRMED_NAME)
+		{
+			this.state = unconfirmedState;
+		}
+		else if(e == NEW_NAME )
+		{
+			this.state = newState;
+		}
+		else if(e == ASSIGNED_NAME)
+		{
+			this.state = assignedState;
+		}
+		else if(e == RESOLVED_NAME)
+		{
+			this.state = resolvedState;
+		}
+		else if(e == REOPEN_NAME)
+		{
+			this.state = reopenState;
+		}
+		else if(e == CLOSED_NAME)
+		{
+			this.state = closedState;
+		}
 	}
 	
 	/**
@@ -194,9 +217,32 @@ public class TrackedBug
 	 * 
 	 * @param f
 	 */
-	public void update(Command f) 
+	public void update(Command c) 
 	{
-//////////////?????
+		if(this.state == unconfirmedState)
+		{
+			unconfirmedState.updateState(c);
+		}
+		if(this.state == newState)
+		{
+			newState.updateState(c);
+		}
+		if(this.state == assignedState)
+		{
+			assignedState.updateState(c);
+		}
+		if(this.state == reopenState)
+		{
+			reopenState.updateState(c);
+		}
+		if(this.state == closedState)
+		{
+			closedState.updateState(c);
+		}
+		if(this.state == resolvedState)
+		{
+			resolvedState.updateState(c);
+		}
 	}
 	
 	/**
@@ -225,6 +271,7 @@ public class TrackedBug
 		/**
 		 * 
 		 */
+		@Override
 		public void updateState(Command c)
 		{
 			switch(c.getCommand())
@@ -275,6 +322,7 @@ public class TrackedBug
 		/**
 		 * 
 		 */
+		@Override
 		public void updateState(Command c)
 		{
 			switch(c.getCommand()){
@@ -324,6 +372,7 @@ public class TrackedBug
 		/**
 		 * 
 		 */
+		@Override
 		public void updateState(Command c)
 		{
 			switch(c.getCommand()) 
@@ -374,6 +423,7 @@ public class TrackedBug
 		/**
 		 * 
 		 */
+		@Override
 		public void updateState(Command c)
 		{
 			switch(c.getCommand())
@@ -424,6 +474,7 @@ public class TrackedBug
 		/**
 		 * 
 		 */
+		@Override
 		public void updateState(Command c)
 		{
 			switch(c.getCommand())
@@ -475,6 +526,7 @@ public class TrackedBug
 		/**
 		 * 
 		 */
+		@Override
 		public void updateState(Command c)
 		{
 			switch(c.getCommand())
