@@ -88,7 +88,7 @@ public class TrackedBug
 	 * 
 	 * @param d
 	 */
-	private void setSate(String e) 
+	private void setState(String e) 
 	{
 		if(e == UNCONFIRMED_NAME)
 		{
@@ -165,7 +165,7 @@ public class TrackedBug
 	 */
 	public String getOwner() 
 	{
-//////////////?????
+		
 	}
 	
 	/**
@@ -251,7 +251,18 @@ public class TrackedBug
 	 */
 	public Bug getXMLBug() 
 	{
-//////////////?????
+		Bug bug = new Bug();
+		bug.setConfirmed(this.confirmed);
+		bug.setId(this.bugId);
+		bug.setNoteList(this.getNotes());
+		bug.setOwner( this.getOwner());
+		bug.setReporter(this.getReporter());
+		bug.setResolution(this.getResolutionString());
+		bug.setState(this.getState().getStateName());
+		bug.setSummary(this.getSummary());
+		bug.setVotes(this.votes);
+		
+		return bug;
 	}
 	
 	/**
@@ -278,10 +289,26 @@ public class TrackedBug
 			{
 				case VOTE:
 				{
+					votes ++;
+					if(votes >= VOTE_THRESHOLD)
+					{
+						if(getOwner() == null)
+						{
+							setState(NEW_NAME);
+						}
+						else
+						{
+							setState(ASSIGNED_NAME);
+						}
+					}
 					break;
 				}
 				case CONFIRM:
 				{
+					if(getOwner() != null)
+					{
+						setState(ASSIGNED_NAME);
+					}
 					break;
 				}
 				case POSSESSION:
