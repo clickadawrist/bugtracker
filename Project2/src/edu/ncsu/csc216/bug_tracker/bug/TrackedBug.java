@@ -17,6 +17,8 @@ public class TrackedBug
 	private BugState state;
 	private String summary;
 	private String reporter;
+	private String owner;
+	//I forgot to put in the field above me (^ ^;)
 	private int votes;
 	private boolean confirmed;
 	private ArrayList<String> notes;
