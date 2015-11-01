@@ -249,7 +249,7 @@ public class TrackedBug
 	
 	/**
 	 * 
-	 * @return
+	 * @return bug
 	 */
 	public Bug getXMLBug() 
 	{
@@ -335,6 +335,7 @@ public class TrackedBug
 		/**
 		 * 
 		 */
+		@Override
 		public String getStateName()
 		{
 			return UNCONFIRMED_NAME;
@@ -385,6 +386,7 @@ public class TrackedBug
 		/**
 		 * 
 		 */
+		@Override
 		public String getStateName()
 		{
 			return NEW_NAME;
@@ -436,6 +438,7 @@ public class TrackedBug
 		/**
 		 * 
 		 */
+		@Override
 		public String getStateName()
 		{
 			return ASSIGNED_NAME;
@@ -487,6 +490,7 @@ public class TrackedBug
 		/**
 		 * 
 		 */
+		@Override
 		public String getStateName()
 		{
 			return RESOLVED_NAME;
@@ -538,6 +542,7 @@ public class TrackedBug
 		/**
 		 * 
 		 */
+		@Override
 		public String getStateName()
 		{
 			return CLOSED_NAME;
@@ -590,6 +595,7 @@ public class TrackedBug
 		/**
 		 * 
 		 */
+		@Override
 		public String getStateName()
 		{
 			return REOPEN_NAME;
