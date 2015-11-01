@@ -8,8 +8,9 @@ import edu.ncsu.csc216.bug_tracker.tracker.BugList;
 import edu.ncsu.csc216.bug_tracker.xml.Bug;
 
 /**
+ * The TrackedBug class creates a new TrackedBug from a Bug object.
+ * When saving, the TrackedBug will generate a Bug object for writing to a file.
  * @author Manaka Green and Paul Hawkins
- *
  */
 public class TrackedBug 
 {
@@ -78,8 +79,8 @@ public class TrackedBug
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Gets the bug's state.
+	 * @return state Current state of the bug
 	 */
 	public BugState getState() 
 	{
@@ -87,11 +88,12 @@ public class TrackedBug
 	}
 	
 	/**
-	 * 
-	 * @param d
+	 * Helps with translating between string 
+	 * @param e
 	 */
 	private void setState(String e) 
 	{
+	//Help with translating between the BugState and Resolution objects and their string equivalents
 		if(e == UNCONFIRMED_NAME)
 		{
 			this.state = unconfirmedState;
