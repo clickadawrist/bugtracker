@@ -167,7 +167,7 @@ public class TrackedBug
 	 */
 	public String getOwner() 
 	{
-		
+		return this.owner;
 	}
 	
 	/**
