@@ -29,7 +29,7 @@ public class BugList {
 	 * Adds bug to Bug Tracker's XML list of bugs from user input.
 	 * @param summary Description of the bug being added
 	 * @param reporter Name of the person adding the bug
-	 * @return temp List of the newly added bugs
+	 * @return temp ID of the newly added bug
 	 */
 	public int addBug(String summary, String reporter)
 	{

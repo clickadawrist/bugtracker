@@ -38,7 +38,6 @@ public class TrackedBug
 	public static final int VOTE_THRESHOLD = 3;
 	private static int counter;
 	private Resolution resolution;
-	private BugList bugs;
 	
 	/**
 	 * 
@@ -72,7 +71,7 @@ public class TrackedBug
 	 */
 	public static void incrementCounter() 
 	{
-		counter++;
+		TrackedBug.counter++;
 	}
 	
 	/**
