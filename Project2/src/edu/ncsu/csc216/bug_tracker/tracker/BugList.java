@@ -87,7 +87,7 @@ public class BugList {
 	 * @param id Integer value of bug's id
 	 * @return list List of bugs from Bug Tracker by id
 	 */
-	public TrackedBug getBugByid(int id)
+	public TrackedBug getBugById(int id)
 	{
 		for(int i = 0; i < list.size(); i++)
 		{
@@ -106,14 +106,14 @@ public class BugList {
 	 */
 	public void executeCommand(int id, Command c)
 	{
-		getBugByid(id).update(c);
+		getBugById(id).update(c);
 	}
 	
 	/**
 	 * Deletes bugs from Bug Tracker's list according to bug's id.
 	 * @param id Integer value of bug's id
 	 */
-	public void deleteBugByid(int id)
+	public void deleteBugById(int id)
 	{
 		for(int i = 0; i < list.size(); i++)
 		{

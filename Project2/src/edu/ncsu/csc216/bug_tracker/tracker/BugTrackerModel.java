@@ -95,9 +95,9 @@ public class BugTrackerModel {
 		return listAsArray;
 	}
 	
-	public TrackedBug getBugByid(int id)
+	public TrackedBug getBugById(int id)
 	{
-		return bugs.getBugByid(id);
+		return bugs.getBugById(id);
 	}
 	
 	public void executeCommand(int id,Command c)
@@ -105,9 +105,9 @@ public class BugTrackerModel {
 		bugs.executeCommand(id, c);
 	}
 	
-	public void deleteBugByid(int id)
+	public void deleteBugById(int id)
 	{
-		bugs.deleteBugByid(id);
+		bugs.deleteBugById(id);
 	}
 	
 	public void addBugToList(String summary, String reporter)
