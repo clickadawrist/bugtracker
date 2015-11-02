@@ -59,6 +59,12 @@ public class TrackedBug
 	{
 		this.summary = z.getSummary();
 		this.reporter = z.getReporter();
+		this.bugId = z.getId();
+		setState(z.getState());
+		this.owner = z.getOwner();
+		this.votes = z.getVotes();
+		this.confirmed = z.confirmed;
+		this.notes = (ArrayList<String>) z.getNoteList().note;
 	}
 	
 	/**
