@@ -44,7 +44,7 @@ public class BugList {
 		
 	}
 	
-	public void excecuteCommand(int i, Command c)
+	public void excecuteCommand(int index, Command c)
 	{
 		
 	}
