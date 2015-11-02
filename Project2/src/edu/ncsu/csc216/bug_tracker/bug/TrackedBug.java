@@ -187,6 +187,11 @@ public class TrackedBug
 		return this.summary;
 	}
 	
+	public int getVotes()
+	{
+		return votes;
+	}
+	
 	/**
 	 * 
 	 * @return
