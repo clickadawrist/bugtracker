@@ -101,7 +101,7 @@ public class BugTrackerModel {
 	
 	public void excecuteCommand(int id,Command c)
 	{
-		bugs.getBugByid(id).update(c);
+		bugs.excecuteCommand(id, c);
 	}
 	
 	public void deleteBugByid(int id)
