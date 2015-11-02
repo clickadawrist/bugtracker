@@ -368,6 +368,8 @@ public class TrackedBug
 				}
 				case POSSESSION:
 				{
+					owner = c.getDeveloperId();
+					setState(ASSIGNED_NAME);
 					break;
 				}
 				case REOPEN:
@@ -428,11 +430,19 @@ public class TrackedBug
 				}
 				case RESOLVED:
 				{
+					if(getResolution() == Resolution.FIXED)
+					{
+						setState(RESOLVED_NAME);
+					}
+					else
+					{
+						setState(CLOSED_NAME);
+					}
 					break;
 				}
 				default:
 				{
-					break;
+					throw new UnsupportedOperationException();
 				}
 			}
 		}
@@ -476,6 +486,17 @@ public class TrackedBug
 				}
 				case REOPEN:
 				{
+					if(isConfirmed())
+					{
+						setState(REOPEN_NAME);
+					}
+					else
+					{
+						setState(UNCONFIRMED_NAME);
+					}
+					
+					setResolution(null);
+					
 					break;
 				}
 				case RESOLVED:
@@ -484,6 +505,7 @@ public class TrackedBug
 				}
 				default:
 				{
+					setState(CLOSED_NAME);
 					break;
 				}
 			}
@@ -528,6 +550,14 @@ public class TrackedBug
 				}
 				case REOPEN:
 				{
+					if(isConfirmed())
+					{
+						setState(REOPEN_NAME);
+					}
+					else
+					{
+						setState(UNCONFIRMED_NAME);
+					}
 					break;
 				}
 				case RESOLVED:
@@ -577,6 +607,8 @@ public class TrackedBug
 				}
 				case POSSESSION:
 				{
+					owner = c.getDeveloperId();
+					setState(ASSIGNED_NAME);
 					break;
 				}
 				case REOPEN:
@@ -585,11 +617,19 @@ public class TrackedBug
 				}
 				case RESOLVED:
 				{
+					if(getResolution() == Resolution.FIXED)
+					{
+						setState(RESOLVED_NAME);
+					}
+					else
+					{
+						setState(CLOSED_NAME);
+					}
 					break;
 				}
 				default:
 				{
-					break;
+					throw new UnsupportedOperationException();
 				}
 			}
 		}
