@@ -16,21 +16,13 @@ import edu.ncsu.csc216.bug_tracker.xml.BugReader;
 public class BugList {
 
 	private ArrayList<TrackedBug> list;
-	private BugReader reader = new BugReader("test");
 	/**
 	 * @throws BugIOException 
 	 * 
 	 */
-	public BugList() throws BugIOException 
+	public BugList()  
 	{
-		if(reader.getBugs() == null)
-		{
-			TrackedBug.setCounter(0);
-		}
-		else
-		{
-			addXMLBug(reader.getBugs());
-		}
+		TrackedBug.setCounter(0);
 	}
 	
 	public int addBug(String summary, String reporter)
@@ -40,12 +32,12 @@ public class BugList {
 		return temp.getBugId();
 	}
 	
-	public void addXMLBug(List<Bug> bugList)
+	public void addXMLBug(List<Bug> bugList) 
 	{
 		int maxId = 0;
-		for(int i = 0; i < reader.getBugs().size(); i++)
+		for(int i = 0; i < bugList.size(); i++)
 		{
-			TrackedBug temp = new TrackedBug(reader.getBugs().get(i));
+			TrackedBug temp = new TrackedBug(bugList.get(i));
 			maxId = Math.max(maxId, temp.getBugId());
 			list.add(temp);
 		}
