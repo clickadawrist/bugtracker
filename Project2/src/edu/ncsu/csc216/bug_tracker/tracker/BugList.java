@@ -1,5 +1,6 @@
 package edu.ncsu.csc216.bug_tracker.tracker;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.ncsu.csc216.bug_tracker.bug.TrackedBug;
@@ -12,6 +13,7 @@ import edu.ncsu.csc216.bug_tracker.xml.Bug;
  */
 public class BugList {
 
+	ArrayList<TrackedBug> list;
 	/**
 	 * 
 	 */
