@@ -104,7 +104,7 @@ public class BugList {
 	 * @param id Integer value of bug's id
 	 * @param c Command that updates state of bug
 	 */
-	public void excecuteCommand(int id, Command c)
+	public void executeCommand(int id, Command c)
 	{
 		getBugByid(id).update(c);
 	}

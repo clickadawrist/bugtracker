@@ -1,6 +1,3 @@
-/**
- * 
- */
 package edu.ncsu.csc216.bug_tracker.tracker;
 
 import edu.ncsu.csc216.bug_tracker.bug.TrackedBug;
@@ -10,13 +7,17 @@ import edu.ncsu.csc216.bug_tracker.xml.BugReader;
 import edu.ncsu.csc216.bug_tracker.xml.BugWriter;
 
 /**
- * @author tmanthawk
- *
+ * 
+ * @author Paul Hawkins and Manaka Green
  */
 public class BugTrackerModel {
 
+	/** */
 	private static BugTrackerModel model = null;
+	/** */
+	
 	private BugList bugs;
+	
 	/**
 	 * 
 	 */
@@ -99,9 +100,9 @@ public class BugTrackerModel {
 		return bugs.getBugByid(id);
 	}
 	
-	public void excecuteCommand(int id,Command c)
+	public void executeCommand(int id,Command c)
 	{
-		bugs.excecuteCommand(id, c);
+		bugs.executeCommand(id, c);
 	}
 	
 	public void deleteBugByid(int id)
