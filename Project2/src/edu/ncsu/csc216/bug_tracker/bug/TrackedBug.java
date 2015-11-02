@@ -258,13 +258,13 @@ public class TrackedBug
 		Bug bug = new Bug();
 		bug.setConfirmed(this.confirmed);
 		bug.setId(this.bugId);
-		bug.setNoteList(this.getNotes());
 		bug.setOwner( this.getOwner());
 		bug.setReporter(this.getReporter());
 		bug.setResolution(this.getResolutionString());
 		bug.setState(this.getState().getStateName());
 		bug.setSummary(this.getSummary());
 		bug.setVotes(this.votes);
+		bug.noteList.note = this.getNotes();
 		
 		return bug;
 	}
