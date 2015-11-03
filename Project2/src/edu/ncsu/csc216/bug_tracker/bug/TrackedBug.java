@@ -451,7 +451,7 @@ public class TrackedBug
 				}
 				case RESOLVED:
 				{
-					if(getResolution() != Resolution.FIXED)
+					if(getResolution() == Resolution.FIXED)
 					{
 						setState(RESOLVED_NAME);
 					}
@@ -459,6 +459,7 @@ public class TrackedBug
 					{
 						setState(CLOSED_NAME);
 					}
+					resolution = c.getResolution();
 					break;
 				}
 				default:
@@ -639,7 +640,7 @@ public class TrackedBug
 				}
 				case RESOLVED:
 				{
-					if(getResolution() != Resolution.FIXED)
+					if(getResolution() == Resolution.FIXED)
 					{
 						setState(RESOLVED_NAME);
 					}
