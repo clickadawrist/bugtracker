@@ -272,30 +272,8 @@ public class TrackedBug
 	 */
 	public void update(Command c) 
 	{
-		if(this.state == unconfirmedState)
-		{
-			unconfirmedState.updateState(c);
-		}
-		else if(this.state == newState)
-		{
-			newState.updateState(c);
-		}
-		else if(this.state == assignedState)
-		{
-			assignedState.updateState(c);
-		}
-		else if(this.state == reopenState)
-		{
-			reopenState.updateState(c);
-		}
-		else if(this.state == closedState)
-		{
-			closedState.updateState(c);
-		}
-		else if(this.state == resolvedState)
-		{
-			resolvedState.updateState(c);
-		}
+		this.getState().updateState(c);
+		resolution = c.getResolution();
 		if(c.getNote() != null || c.getNote() != "")
 		{
 			notes.add(c.getNote());
@@ -488,7 +466,6 @@ public class TrackedBug
 				}
 				case RESOLVED:
 				{
-					resolution = c.getResolution();
 					if(getResolution() == Resolution.FIXED)
 					{
 						setState(RESOLVED_NAME);
@@ -680,7 +657,6 @@ public class TrackedBug
 				}
 				case RESOLVED:
 				{
-					resolution = c.getResolution();
 					if(getResolution() == Resolution.FIXED)
 					{
 						setState(RESOLVED_NAME);
