@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Bugs>
+	<Bug>
+		<id>2</id>
+		<state>New</state>
+		<summary>Bug description</summary>
+		<reporter>reporter</reporter>
+		<votes>1</votes>
+		<confirmed>true</confirmed>
+		<note_list>
+			<note>Note 1</note>
+			<note>Note 2</note>
+		</note_list>
+	</Bug>
+</Bugs>

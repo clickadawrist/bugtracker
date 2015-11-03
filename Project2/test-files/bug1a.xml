@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Bugs>
+	<Bug>
+		<id>1</id>
+		<state>Unconfirmed</state>
+		<summary>Bug description</summary>
+		<reporter>reporter</reporter>
+		<votes>1</votes>
+		<confirmed>false</confirmed>
+		<note_list>
+			<note>Note 1</note>
+		</note_list>
+	</Bug>
+	<Bug>
+		<id>2</id>
+		<state>New</state>
+		<summary>Bug description</summary>
+		<reporter>reporter</reporter>
+		<votes>1</votes>
+		<confirmed>true</confirmed>
+		<note_list>
+			<note>Note 1</note>
+			<note>Note 2</note>
+		</note_list>
+	</Bug>
+	<Bug>
+		<id>3</id>
+		<state>Assigned</state>
+		<summary>Bug description</summary>
+		<reporter>reporter</reporter>
+		<owner>owner</owner>
+		<votes>1</votes>
+		<confirmed>true</confirmed>
+		<note_list>
+			<note>Note 1</note>
+			<note>Note 2</note>
+			<note>Note 3</note>
+		</note_list>
+	</Bug>
+	<Bug>
+		<id>4</id>
+		<state>Resolved</state>
+		<summary>Bug description</summary>
+		<reporter>reporter</reporter>
+		<owner>owner</owner>
+		<votes>1</votes>
+		<confirmed>true</confirmed>
+		<resolution>Fixed</resolution>
+		<note_list>
+			<note>Note 1</note>
+			<note>Note 2</note>
+			<note>Note 3</note>
+			<note>Note 4</note>
+		</note_list>
+	</Bug>
+	<Bug>
+		<id>5</id>
+		<state>Reopen</state>
+		<summary>Bug description</summary>
+		<reporter>reporter</reporter>
+		<owner>owner</owner>
+		<votes>1</votes>
+		<confirmed>true</confirmed>
+		<note_list>
+			<note>Note 1</note>
+			<note>Note 2</note>
+			<note>Note 3</note>
+			<note>Note 4</note>
+			<note>Note 5</note>
+		</note_list>
+	</Bug>
+	<Bug>
+		<id>6</id>
+		<state>Closed</state>
+		<summary>Bug description</summary>
+		<reporter>reporter</reporter>
+		<owner>owner</owner>
+		<votes>1</votes>
+		<confirmed>true</confirmed>
+		<resolution>WorksForMe</resolution>
+		<note_list>
+			<note>Note 1</note>
+			<note>Note 2</note>
+			<note>Note 3</note>
+			<note>Note 4</note>
+		</note_list>
+	</Bug>
+</Bugs>

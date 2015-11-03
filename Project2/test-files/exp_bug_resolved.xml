@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Bugs>
+	<Bug>
+		<id>4</id>
+		<state>Resolved</state>
+		<summary>Bug description</summary>
+		<reporter>reporter</reporter>
+		<owner>owner</owner>
+		<votes>1</votes>
+		<confirmed>true</confirmed>
+		<resolution>Fixed</resolution>
+		<note_list>
+			<note>Note 1</note>
+			<note>Note 2</note>
+			<note>Note 3</note>
+			<note>Note 4</note>
+		</note_list>
+	</Bug>
+</Bugs>

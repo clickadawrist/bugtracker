@@ -1,39 +1,56 @@
-/**
- * 
- */
 package edu.ncsu.csc216.bug_tracker.tracker;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
+import java.util.List;
+
+import junit.framework.TestCase;
+
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.ncsu.csc216.course_manager.courses.Course;
+import edu.ncsu.csc216.course_manager.io.CourseRecordIO;
+
 /**
- * @author tmanthawk
- *
+ * Tests BugTrackerModel.
+ * @author Paul Hakwins and Manaka Green
  */
 public class BugTrackerModelTest {
 
 	BugTrackerModel tracker;
+	private static BugTrackerModel model;
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
+		super.setUp();
 		tracker = BugTrackerModel.getInstance();
+	}
+
+	/**
+	 * Tests getInstance method.
+	 */
+	@Test
+	public void testGetInstance() {
+		try {
+			
+			model = new BugTrackerModel();
+			
+			} 
+		catch (NullSomethingSomethingException e) 
+		{
+			fail("No ");
+		}
+		
 		
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.tracker.BugTrackerModel#getInstance()}.
-	 */
-	@Test
-	public void testGetInstance() {
-		fail("Not yet implemented");
-	}
-
-	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.tracker.BugTrackerModel#saveBugsToFile(java.lang.String)}.
+	 * Tests saveBugsToFile method.
 	 */
 	@Test
 	public void testSaveBugsToFile() {
@@ -41,7 +58,7 @@ public class BugTrackerModelTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.tracker.BugTrackerModel#loadBugsFromFile(java.lang.String)}.
+	 * Tests loadBugsFromFile method.
 	 */
 	@Test
 	public void testLoadBugsFromFile() {
@@ -49,7 +66,7 @@ public class BugTrackerModelTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.tracker.BugTrackerModel#createNewBugList()}.
+	 * Tests createNewBugList method.
 	 */
 	@Test
 	public void testCreateNewBugList() {
@@ -57,7 +74,7 @@ public class BugTrackerModelTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.tracker.BugTrackerModel#getBugListAsArray()}.
+	 * Tests getBugListAsArray method.
 	 */
 	@Test
 	public void testGetBugListAsArray() {
@@ -68,7 +85,7 @@ public class BugTrackerModelTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.tracker.BugTrackerModel#getBugListByOwnerAsArray(java.lang.String)}.
+	 * Tests getBugListByOwnerAsArray method.
 	 */
 	@Test
 	public void testGetBugListByOwnerAsArray() {
@@ -76,7 +93,7 @@ public class BugTrackerModelTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.tracker.BugTrackerModel#getBugById(int)}.
+	 * Tests getBugById method.
 	 */
 	@Test
 	public void testGetBugById() {
@@ -84,7 +101,7 @@ public class BugTrackerModelTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.tracker.BugTrackerModel#executeCommand(int, edu.ncsu.csc216.bug_tracker.command.Command)}.
+	 * Tests executeCommand method.
 	 */
 	@Test
 	public void testExecuteCommand() {
@@ -92,7 +109,7 @@ public class BugTrackerModelTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.tracker.BugTrackerModel#deleteBugById(int)}.
+	 * Tests deleteBugById method.
 	 */
 	@Test
 	public void testDeleteBugById() {
@@ -100,11 +117,10 @@ public class BugTrackerModelTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.tracker.BugTrackerModel#addBugToList(java.lang.String, java.lang.String)}.
+	 * Tests addBugToList method.
 	 */
 	@Test
 	public void testAddBugToList() {
 		fail("Not yet implemented");
 	}
-
 }
