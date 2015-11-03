@@ -57,7 +57,7 @@ public class TrackedBug
 		this.votes = 1;
 		this.confirmed = false;
 		this.notes = new ArrayList<String>();
-		setResolution(null);
+		resolution = null;
 	}
 	
 	/**
