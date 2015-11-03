@@ -59,6 +59,7 @@ public class TrackedBug
 		this.confirmed = false;
 		this.notes = new ArrayList<String>();
 		resolution = null;
+		TrackedBug.incrementCounter();
 	}
 	
 	/**
@@ -81,6 +82,7 @@ public class TrackedBug
 		{
 			this.notes.add(z.getNoteList().getNote().get(i));
 		}
+		TrackedBug.incrementCounter();
 	}
 	
 	/**
@@ -310,7 +312,7 @@ public class TrackedBug
 	 */
 	public static void setCounter(int g) 
 	{
-		counter = g;
+		TrackedBug.counter = g;
 	}
 	
 	/**
@@ -656,9 +658,7 @@ public class TrackedBug
 				}
 				case REOPEN:
 				{
-					resolution = null;
-					setState(UNCONFIRMED_NAME);
-					break;
+					throw new UnsupportedOperationException();
 				}
 				case RESOLVED:
 				{

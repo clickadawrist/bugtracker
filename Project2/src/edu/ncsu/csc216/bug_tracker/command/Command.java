@@ -7,10 +7,10 @@ package edu.ncsu.csc216.bug_tracker.command;
 public class Command {
 	
 	//Translates resolution to it's string constant name equivalent.
-	public static final String R_FIXED = Resolution.FIXED.toString();
-	public static final String R_DUPLICATE = Resolution.DUPLICATE.toString();
-	public static final String R_WONTFIX = Resolution.WONTFIX.toString();
-	public static final String R_WORKSFORME = Resolution.WORKSFORME.toString();
+	public static final String R_FIXED = "Fixed";
+	public static final String R_DUPLICATE = "Duplicate";
+	public static final String R_WONTFIX = "WontFix";
+	public static final String R_WORKSFORME = "WorksForMe";
 	private String developerId;
 	private String note;
 	
