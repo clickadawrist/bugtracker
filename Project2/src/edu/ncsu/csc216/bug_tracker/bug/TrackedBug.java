@@ -44,11 +44,16 @@ public class TrackedBug
 	 */
 	public TrackedBug(String summary, String reporter) 
 	{
+		if(summary == null || reporter == null)
+		{
+			throw new IllegalArgumentException();
+		}
+		
 		this.summary = summary;
 		this.reporter = reporter;
 		this.bugId = counter;
 		setState(UNCONFIRMED_NAME);
-		this.owner = null;
+		this.owner = "";
 		this.votes = 1;
 		this.confirmed = false;
 		this.notes = this.getNotes();
@@ -221,6 +226,10 @@ public class TrackedBug
 	 */
 	public String getNotesString() 
 	{
+		if(this.notes == null)
+		{
+			return "";
+		}
 		return this.notes.toString();
 	}
 	
@@ -312,7 +321,7 @@ public class TrackedBug
 					votes ++;
 					if(votes >= VOTE_THRESHOLD)
 					{
-						if(getOwner() == null)
+						if(getOwner() == "")
 						{
 							setState(NEW_NAME);
 						}
@@ -325,7 +334,7 @@ public class TrackedBug
 				}
 				case CONFIRM:
 				{
-					if(getOwner() != null)
+					if(getOwner() != "")
 					{
 						setState(ASSIGNED_NAME);
 					}
@@ -652,7 +661,6 @@ public class TrackedBug
 					{
 						setState(CLOSED_NAME);
 					}
-					resolution = null;
 					break;
 				}
 				default:

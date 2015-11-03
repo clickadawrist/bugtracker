@@ -86,7 +86,7 @@ public class BugTrackerModel {
 		for(int i = 0; i < bugs.getBugs().size(); i++)
 		{
 			listAsArray[i][0] = bugs.getBugs().get(i).getBugId();
-			listAsArray[i][1] = bugs.getBugs().get(i).getState().getStateName();
+			listAsArray[i][1] = bugs.getBugs().get(i).getState();
 			listAsArray[i][2] = bugs.getBugs().get(i).getSummary();
 		}
 		
@@ -108,10 +108,10 @@ public class BugTrackerModel {
 		Object [][] listAsArray =  new Object[bugs.getBugs().size()][3];
 		for(int i = 0; i < bugs.getBugs().size(); i++)
 		{
-			if(bugs.getBugs().get(i).getOwner().equals(owner))
+			if(bugs.getBugs().get(i).getOwner() == owner)
 			{
 				listAsArray[i][0] = bugs.getBugs().get(i).getBugId();
-				listAsArray[i][1] = bugs.getBugs().get(i).getState().getStateName();
+				listAsArray[i][1] = bugs.getBugs().get(i).getState();
 				listAsArray[i][2] = bugs.getBugs().get(i).getSummary();
 			}
 		}

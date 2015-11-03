@@ -73,6 +73,11 @@ public class BugList {
 	 */
 	public List<TrackedBug> getBugsByOwner(String owner)
 	{
+		if(owner == null)
+		{
+			throw new IllegalArgumentException();
+		}
+		
 		List<TrackedBug> temp = new ArrayList<TrackedBug>();
 		for(int i = 0; i < bugs.size(); i++)
 		{
