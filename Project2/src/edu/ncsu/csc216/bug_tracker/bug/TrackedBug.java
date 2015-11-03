@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import edu.ncsu.csc216.bug_tracker.command.Command;
 import edu.ncsu.csc216.bug_tracker.command.Command.Resolution;
 import edu.ncsu.csc216.bug_tracker.xml.Bug;
+import edu.ncsu.csc216.bug_tracker.xml.NoteList;
 
 /**
  * The TrackedBug class creates a new TrackedBug from a Bug object.
@@ -288,18 +289,13 @@ public class TrackedBug
 		Bug bug = new Bug();
 		bug.setConfirmed(this.confirmed);
 		bug.setId(this.bugId);
-		if(owner != null)
-		{
-			bug.setOwner( this.getOwner());
-		}
+		bug.setOwner( this.getOwner());
 		bug.setReporter(this.getReporter());
-		if(resolution != null)
-		{
-			bug.setResolution(this.getResolutionString());
-		}
+		bug.setResolution(this.getResolutionString());
 		bug.setState(this.getState().getStateName());
 		bug.setSummary(this.getSummary());
 		bug.setVotes(this.votes);
+		bug.setNoteList(new NoteList());
 		bug.noteList.note = this.getNotes();
 		
 		return bug;
