@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import edu.ncsu.csc216.bug_tracker.command.Command;
 import edu.ncsu.csc216.bug_tracker.command.Command.Resolution;
-import edu.ncsu.csc216.bug_tracker.tracker.BugList;
 import edu.ncsu.csc216.bug_tracker.xml.Bug;
 
 /**
@@ -244,23 +243,23 @@ public class TrackedBug
 		{
 			unconfirmedState.updateState(c);
 		}
-		if(this.state == newState)
+		else if(this.state == newState)
 		{
 			newState.updateState(c);
 		}
-		if(this.state == assignedState)
+		else if(this.state == assignedState)
 		{
 			assignedState.updateState(c);
 		}
-		if(this.state == reopenState)
+		else if(this.state == reopenState)
 		{
 			reopenState.updateState(c);
 		}
-		if(this.state == closedState)
+		else if(this.state == closedState)
 		{
 			closedState.updateState(c);
 		}
-		if(this.state == resolvedState)
+		else if(this.state == resolvedState)
 		{
 			resolvedState.updateState(c);
 		}
@@ -328,19 +327,18 @@ public class TrackedBug
 				{
 					if(getOwner() != null)
 					{
-						owner = c.getDeveloperId();
 						setState(ASSIGNED_NAME);
 					}
+					else
+					{
+						setState(NEW_NAME);
+					}
+					confirmed = true;
 					break;
 				}
 				case POSSESSION:
 				{
-					if(getOwner() != null)
-					{
-						owner = c.getDeveloperId();
-						setState(ASSIGNED_NAME);
-					}
-					break;
+					throw new UnsupportedOperationException();
 				}
 				case REOPEN:
 				{
@@ -581,6 +579,7 @@ public class TrackedBug
 					{
 						setState(UNCONFIRMED_NAME);
 					}
+					resolution = null;
 					break;
 				}
 				case RESOLVED:
