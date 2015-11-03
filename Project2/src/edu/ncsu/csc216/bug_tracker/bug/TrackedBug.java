@@ -272,7 +272,6 @@ public class TrackedBug
 	 */
 	public void update(Command c) 
 	{
-		resolution = c.getResolution();
 		this.getState().updateState(c);
 		if(c.getNote() != null || c.getNote() != "")
 		{
@@ -466,6 +465,7 @@ public class TrackedBug
 				}
 				case RESOLVED:
 				{
+					resolution = c.getResolution();
 					if(getResolution() == Resolution.FIXED)
 					{
 						setState(RESOLVED_NAME);
@@ -657,6 +657,7 @@ public class TrackedBug
 				}
 				case RESOLVED:
 				{
+					resolution = c.getResolution();
 					if(getResolution() == Resolution.FIXED)
 					{
 						setState(RESOLVED_NAME);
