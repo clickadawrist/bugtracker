@@ -74,6 +74,7 @@ public class TrackedBug
 		this.votes = z.getVotes();
 		this.confirmed = z.confirmed;
 		setResolution(z.getResolution());
+		this.notes = new ArrayList<String>();
 		
 		for(int i = 0; i < z.getNoteList().getNote().size(); i++)
 		{
@@ -251,7 +252,7 @@ public class TrackedBug
 		for(int i = 0; i < this.notes.size(); i++)
 		{
 			note += this.notes.get(i);
-			note += "/n------";
+			note += "\n------\n";
 		}
 		return note;
 	}
