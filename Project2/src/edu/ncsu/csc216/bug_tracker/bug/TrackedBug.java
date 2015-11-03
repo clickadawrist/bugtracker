@@ -49,7 +49,7 @@ public class TrackedBug
 		this.bugId = counter;
 		setState(UNCONFIRMED_NAME);
 		this.owner = null;
-		this.votes = 0;
+		this.votes = 1;
 		this.confirmed = false;
 		this.notes = this.getNotes();
 		setResolution(null);
@@ -517,7 +517,7 @@ public class TrackedBug
 						setState(UNCONFIRMED_NAME);
 					}
 					
-					setResolution(null);
+					resolution = null;
 					
 					break;
 				}
@@ -632,11 +632,14 @@ public class TrackedBug
 				{
 					owner = c.getDeveloperId();
 					setState(ASSIGNED_NAME);
+					resolution = null;
 					break;
 				}
 				case REOPEN:
 				{
-					throw new UnsupportedOperationException();
+					resolution = null;
+					setState(UNCONFIRMED_NAME);
+					break;
 				}
 				case RESOLVED:
 				{
@@ -649,6 +652,7 @@ public class TrackedBug
 					{
 						setState(CLOSED_NAME);
 					}
+					resolution = null;
 					break;
 				}
 				default:
