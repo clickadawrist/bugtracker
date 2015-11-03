@@ -113,10 +113,7 @@ public class BugList {
 	 */
 	public void executeCommand(int id, Command c)
 	{
-		if(bugs.size() > 0)
-		{
-			getBugById(id).update(c);
-		}
+		getBugById(id).update(c);
 	}
 	
 	/**
