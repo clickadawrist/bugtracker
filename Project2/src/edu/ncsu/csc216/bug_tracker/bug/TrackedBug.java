@@ -288,9 +288,15 @@ public class TrackedBug
 		Bug bug = new Bug();
 		bug.setConfirmed(this.confirmed);
 		bug.setId(this.bugId);
-		bug.setOwner( this.getOwner());
+		if(owner != null)
+		{
+			bug.setOwner( this.getOwner());
+		}
 		bug.setReporter(this.getReporter());
-		bug.setResolution(this.getResolutionString());
+		if(resolution != null)
+		{
+			bug.setResolution(this.getResolutionString());
+		}
 		bug.setState(this.getState().getStateName());
 		bug.setSummary(this.getSummary());
 		bug.setVotes(this.votes);
