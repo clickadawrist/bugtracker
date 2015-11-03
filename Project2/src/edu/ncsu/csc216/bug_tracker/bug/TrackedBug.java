@@ -116,27 +116,27 @@ public class TrackedBug
 	private void setState(String e) 
 	{
 	//Help with translating between the BugState and Resolution objects and their string equivalents
-		if(e == UNCONFIRMED_NAME)
+		if(e.equals(UNCONFIRMED_NAME))
 		{
 			this.state = unconfirmedState;
 		}
-		else if(e == NEW_NAME )
+		else if(e.equals(NEW_NAME) )
 		{
 			this.state = newState;
 		}
-		else if(e == ASSIGNED_NAME)
+		else if(e.equals(ASSIGNED_NAME))
 		{
 			this.state = assignedState;
 		}
-		else if(e == RESOLVED_NAME)
+		else if(e.equals(RESOLVED_NAME))
 		{
 			this.state = resolvedState;
 		}
-		else if(e == REOPEN_NAME)
+		else if(e.equals(REOPEN_NAME))
 		{
 			this.state = reopenState;
 		}
-		else if(e == CLOSED_NAME)
+		else if(e.equals(CLOSED_NAME))
 		{
 			this.state = closedState;
 		}
@@ -184,19 +184,19 @@ public class TrackedBug
 	 */
 	private void setResolution(String e) 
 	{	
-		if(e == Command.R_DUPLICATE)
+		if(e.equals(Command.R_DUPLICATE))
 		{
 			this.resolution = Resolution.DUPLICATE;
 		}
-		else if(e == Command.R_FIXED)
+		else if(e.equals(Command.R_FIXED))
 		{
 			this.resolution = Resolution.FIXED;
 		}
-		else if(e == Command.R_WONTFIX)
+		else if(e.equals(Command.R_WONTFIX))
 		{
 			this.resolution = Resolution.WONTFIX;
 		}
-		else if(e == Command.R_WORKSFORME)
+		else if(e.equals(Command.R_WORKSFORME))
 		{
 			this.resolution = Resolution.WORKSFORME;
 		}
