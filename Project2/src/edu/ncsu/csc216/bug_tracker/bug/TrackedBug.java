@@ -56,7 +56,7 @@ public class TrackedBug
 		this.owner = null;
 		this.votes = 1;
 		this.confirmed = false;
-		this.notes = this.getNotes();
+		this.notes = new ArrayList<String>();
 		setResolution(null);
 	}
 	
@@ -73,7 +73,7 @@ public class TrackedBug
 		this.owner = z.getOwner();
 		this.votes = z.getVotes();
 		this.confirmed = z.confirmed;
-		this.notes = (ArrayList<String>) z.getNoteList().note;
+		this.notes = (ArrayList<String>)z.getNoteList().note;
 		setResolution(z.getResolution());
 	}
 	
@@ -288,6 +288,10 @@ public class TrackedBug
 		else if(this.state == resolvedState)
 		{
 			resolvedState.updateState(c);
+		}
+		if(c.getNote() != null || c.getNote() != "")
+		{
+			notes.add(c.getNote());
 		}
 	}
 	

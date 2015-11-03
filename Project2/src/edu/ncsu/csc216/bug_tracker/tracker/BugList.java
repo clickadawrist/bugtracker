@@ -113,7 +113,10 @@ public class BugList {
 	 */
 	public void executeCommand(int id, Command c)
 	{
-		getBugById(id).update(c);
+		if(bugs.size() > 0)
+		{
+			getBugById(id).update(c);
+		}
 	}
 	
 	/**
@@ -122,11 +125,14 @@ public class BugList {
 	 */
 	public void deleteBugById(int id)
 	{
-		for(int i = 0; i < bugs.size(); i++)
+		if(bugs.size() > 0)
 		{
-			if(bugs.get(i).getBugId() == id)
+			for(int i = 0; i < bugs.size(); i++)
 			{
-				bugs.remove(i);
+				if(bugs.get(i).getBugId() == id)
+				{
+					bugs.remove(i);
+				}
 			}
 		}
 	}
