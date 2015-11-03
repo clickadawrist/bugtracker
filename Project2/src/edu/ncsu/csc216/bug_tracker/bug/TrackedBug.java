@@ -73,8 +73,12 @@ public class TrackedBug
 		this.owner = z.getOwner();
 		this.votes = z.getVotes();
 		this.confirmed = z.confirmed;
-		this.notes = (ArrayList<String>)z.getNoteList().note;
 		setResolution(z.getResolution());
+		
+		for(int i = 0; i < z.getNoteList().getNote().size(); i++)
+		{
+			this.notes.add(z.getNoteList().getNote().get(i));
+		}
 	}
 	
 	/**
@@ -243,10 +247,6 @@ public class TrackedBug
 	 */
 	public String getNotesString() 
 	{
-		if(this.notes == null)
-		{
-			return "";
-		}
 		return this.notes.toString();
 	}
 	
