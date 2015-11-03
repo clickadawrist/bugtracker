@@ -45,7 +45,7 @@ public class BugList {
 	 * Sets id of newly added bugs.
 	 * @param bugList List of bugs from non Bug-Tracker XML
 	 */
-	public void addXMLBug(List<Bug> bugList) 
+	public void addXMLBugs(List<Bug> bugList) 
 	{
 		int maxId = 0;
 		for(int i = 0; i < bugList.size(); i++)

@@ -48,7 +48,7 @@ public class BugTrackerModel {
 		try 
 		{
 			BugReader reader = new BugReader(file);
-			bugs.addXMLBug(reader.getBugs());
+			bugs.addXMLBugs(reader.getBugs());
 		} 
 		catch (BugIOException e) 
 		{
