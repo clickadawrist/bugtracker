@@ -63,7 +63,7 @@ public class BugTrackerModel {
 	
 	public Object[][] getBugListAsArray()
 	{
-		Object [][] listAsArray =  new Object[bugs.getBugs().size()+1][3];
+		Object [][] listAsArray =  new Object[bugs.getBugs().size()][3];
 		for(int i = 0; i < bugs.getBugs().size(); i++)
 		{
 			listAsArray[i][0] = bugs.getBugs().get(i).getBugId();

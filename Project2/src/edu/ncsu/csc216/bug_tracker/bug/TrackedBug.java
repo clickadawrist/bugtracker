@@ -48,6 +48,7 @@ public class TrackedBug
 	{
 		this.summary = summary;
 		this.reporter = reporter;
+		this.bugId = counter;
 	}
 	
 	/**
