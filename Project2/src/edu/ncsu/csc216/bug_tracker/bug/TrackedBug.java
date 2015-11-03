@@ -451,6 +451,7 @@ public class TrackedBug
 				}
 				case RESOLVED:
 				{
+					resolution = c.getResolution();
 					if(getResolution() == Resolution.FIXED)
 					{
 						setState(RESOLVED_NAME);
@@ -639,6 +640,7 @@ public class TrackedBug
 				}
 				case RESOLVED:
 				{
+					resolution = c.getResolution();
 					if(getResolution() == Resolution.FIXED)
 					{
 						setState(RESOLVED_NAME);
