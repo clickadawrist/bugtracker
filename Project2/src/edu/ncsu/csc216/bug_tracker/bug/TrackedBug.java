@@ -53,7 +53,7 @@ public class TrackedBug
 		this.reporter = reporter;
 		this.bugId = counter;
 		setState(UNCONFIRMED_NAME);
-		this.owner = "";
+		this.owner = null;
 		this.votes = 1;
 		this.confirmed = false;
 		this.notes = this.getNotes();
@@ -151,8 +151,25 @@ public class TrackedBug
 	 */
 	public String getResolutionString() 
 	{
-		return this.resolution.toString();
+		String res = "";
 		
+		if(resolution == Resolution.DUPLICATE)
+		{
+			res = Command.R_DUPLICATE;
+		}
+		else if(resolution == Resolution.FIXED)
+		{
+			res = Command.R_FIXED;
+		}
+		else if(resolution == Resolution.WONTFIX)
+		{
+			res = Command.R_WONTFIX;
+		}
+		else if(resolution == Resolution.WORKSFORME)
+		{
+			res = Command.R_WORKSFORME;
+		}
+		return res;
 	}
 	
 	/**
@@ -321,7 +338,7 @@ public class TrackedBug
 					votes ++;
 					if(votes >= VOTE_THRESHOLD)
 					{
-						if(getOwner() == "")
+						if(getOwner() == null)
 						{
 							setState(NEW_NAME);
 						}
@@ -334,7 +351,7 @@ public class TrackedBug
 				}
 				case CONFIRM:
 				{
-					if(getOwner() != "")
+					if(getOwner() != null)
 					{
 						setState(ASSIGNED_NAME);
 					}
