@@ -22,7 +22,7 @@ public class BugTrackerModel {
 	 * 
 	 */
 	private BugTrackerModel() {
-		
+		bugs = new BugList();
 	}
 	
 	public static BugTrackerModel getInstance()

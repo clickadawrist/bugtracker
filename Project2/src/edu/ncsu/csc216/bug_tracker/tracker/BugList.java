@@ -22,6 +22,7 @@ public class BugList {
 	 */
 	public BugList()  
 	{
+		list = new ArrayList<TrackedBug>();
 		TrackedBug.setCounter(0);
 	}
 	
