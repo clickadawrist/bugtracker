@@ -5,8 +5,12 @@ package edu.ncsu.csc216.bug_tracker.tracker;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
+
+import edu.ncsu.csc216.bug_tracker.bug.TrackedBug;
 
 /**
  * @author tmanthawk
@@ -14,11 +18,14 @@ import org.junit.Test;
  */
 public class BugListTest {
 
+	List<TrackedBug> bugs;
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
+		//???
 	}
 
 	/**

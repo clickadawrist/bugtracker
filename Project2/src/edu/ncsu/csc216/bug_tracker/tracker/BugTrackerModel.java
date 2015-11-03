@@ -14,8 +14,8 @@ public class BugTrackerModel {
 
 	/** */
 	private static BugTrackerModel model = null;
-	/** */
 	
+	/** */
 	private BugList bugs;
 	
 	/**
@@ -25,6 +25,10 @@ public class BugTrackerModel {
 		bugs = new BugList();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public static BugTrackerModel getInstance()
 	{
 		if(model == null)
@@ -34,6 +38,10 @@ public class BugTrackerModel {
 		return model;
 	}
 	
+	/**
+	 * 
+	 * @param file
+	 */
 	public void saveBugsToFile(String file)
 	{
 		BugWriter writer = new BugWriter(file);
@@ -43,6 +51,10 @@ public class BugTrackerModel {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param file
+	 */
 	public void loadBugsFromFile(String file)
 	{
 		try 
@@ -56,11 +68,18 @@ public class BugTrackerModel {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	public void createNewBugList()
 	{
 		bugs = new BugList();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public Object[][] getBugListAsArray()
 	{
 		Object [][] listAsArray =  new Object[bugs.getBugs().size()][3];
@@ -74,6 +93,11 @@ public class BugTrackerModel {
 		return listAsArray;
 	}
 	
+	/**
+	 * 
+	 * @param owner
+	 * @return
+	 */
 	public Object[][] getBugListByOwnerAsArray(String owner)
 	{
 		if(owner == null)
@@ -95,21 +119,40 @@ public class BugTrackerModel {
 		return listAsArray;
 	}
 	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
 	public TrackedBug getBugById(int id)
 	{
 		return bugs.getBugById(id);
 	}
 	
+	/**
+	 * 
+	 * @param id
+	 * @param c
+	 */
 	public void executeCommand(int id,Command c)
 	{
 		bugs.executeCommand(id, c);
 	}
 	
+	/**
+	 * 
+	 * @param id
+	 */
 	public void deleteBugById(int id)
 	{
 		bugs.deleteBugById(id);
 	}
 	
+	/**
+	 * 
+	 * @param summary
+	 * @param reporter
+	 */
 	public void addBugToList(String summary, String reporter)
 	{
 		bugs.addBug(summary, reporter);

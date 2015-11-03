@@ -2,14 +2,10 @@ package edu.ncsu.csc216.bug_tracker.tracker;
 
 import static org.junit.Assert.*;
 
-import java.io.FileNotFoundException;
-import java.util.List;
-
-import junit.framework.TestCase;
-
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.ncsu.csc216.bug_tracker.xml.BugWriter;
 
 /**
  * Tests BugTrackerModel.
@@ -18,14 +14,13 @@ import org.junit.Test;
 public class BugTrackerModelTest {
 
 	BugTrackerModel tracker;
-	private static BugTrackerModel model;
+	//do I need the following: private static BugTrackerModel model; ?
 	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-		//super.setUp();
 		tracker = BugTrackerModel.getInstance();
 	}
 
@@ -34,12 +29,12 @@ public class BugTrackerModelTest {
 	 */
 	@Test
 	public void testGetInstance() {
-	//	try {
-	//}
-	//	catch (NullSomethingSomethingException e) 
-	//	{
-	//		fail("No ");
-	//	}
+	//assertEquals(double expected, double actual)
+	//How do you test this method??
+		try{
+		} catch(IndexOutOfBoundsException e) {
+			//assertEquals(model, null);
+		}		
 	}
 
 	/**
@@ -47,7 +42,15 @@ public class BugTrackerModelTest {
 	 */
 	@Test
 	public void testSaveBugsToFile() {
-		fail("Not yet implemented");
+		/*
+		BugWriter writer = new BugWriter(file);
+		for(int i = 0; i < bugs.getBugs().size(); i++)
+		{
+			writer.addItem(bugs.getBugs().get(i).getXMLBug());
+		}
+		*/
+		//Test this method.
+		
 	}
 
 	/**
