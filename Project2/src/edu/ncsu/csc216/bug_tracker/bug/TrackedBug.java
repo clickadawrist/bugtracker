@@ -325,15 +325,16 @@ public class TrackedBug
 				}
 				case CONFIRM:
 				{
-					if(getOwner() != null)
-					{
-						setState(ASSIGNED_NAME);
-					}
-					break;
+					throw new UnsupportedOperationException();
 				}
 				case POSSESSION:
 				{
-					throw new UnsupportedOperationException();
+					if(getOwner() != null)
+					{
+						owner = c.getDeveloperId();
+						setState(ASSIGNED_NAME);
+					}
+					break;
 				}
 				case REOPEN:
 				{
