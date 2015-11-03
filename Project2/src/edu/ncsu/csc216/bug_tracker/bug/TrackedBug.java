@@ -28,12 +28,12 @@ public class TrackedBug
 	private final BugState resolvedState = new ResolvedState();
 	private final BugState reopenState = new ReopenState();
 	private final BugState closedState = new ClosedState();
-	public static final String UNCONFIRMED_NAME = "UnconfirmedState";
-	public static final String NEW_NAME = "NewState";
-	public static final String ASSIGNED_NAME = "AssignedState";
-	public static final String RESOLVED_NAME = "ResolvedState";
-	public static final String REOPEN_NAME = "ReopenState";
-	public static final String CLOSED_NAME = "ClosedState";
+	public static final String UNCONFIRMED_NAME = "Unconfirmed";
+	public static final String NEW_NAME = "New";
+	public static final String ASSIGNED_NAME = "Assigned";
+	public static final String RESOLVED_NAME = "Resolved";
+	public static final String REOPEN_NAME = "Reopen";
+	public static final String CLOSED_NAME = "Closed";
 	public static final int VOTE_THRESHOLD = 3;
 	private static int counter;
 	private Resolution resolution;
