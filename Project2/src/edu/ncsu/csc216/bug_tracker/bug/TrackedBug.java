@@ -184,21 +184,24 @@ public class TrackedBug
 	 */
 	private void setResolution(String e) 
 	{	
-		if(e.equals(Command.R_DUPLICATE))
+		if(e != null)
 		{
-			this.resolution = Resolution.DUPLICATE;
-		}
-		else if(e.equals(Command.R_FIXED))
-		{
-			this.resolution = Resolution.FIXED;
-		}
-		else if(e.equals(Command.R_WONTFIX))
-		{
-			this.resolution = Resolution.WONTFIX;
-		}
-		else if(e.equals(Command.R_WORKSFORME))
-		{
-			this.resolution = Resolution.WORKSFORME;
+			if(e.equals(Command.R_DUPLICATE))
+			{
+				this.resolution = Resolution.DUPLICATE;
+			}
+			else if(e.equals(Command.R_FIXED))
+			{
+				this.resolution = Resolution.FIXED;
+			}
+			else if(e.equals(Command.R_WONTFIX))
+			{
+				this.resolution = Resolution.WONTFIX;
+			}
+			else if(e.equals(Command.R_WORKSFORME))
+			{
+				this.resolution = Resolution.WORKSFORME;
+			}
 		}
 	}
 	
