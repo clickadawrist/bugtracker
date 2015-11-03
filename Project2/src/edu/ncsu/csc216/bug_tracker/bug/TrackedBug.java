@@ -117,30 +117,37 @@ public class TrackedBug
 	 */
 	private void setState(String e) 
 	{
-	//Help with translating between the BugState and Resolution objects and their string equivalents
-		if(e.equals(UNCONFIRMED_NAME))
+		//Help with translating between the BugState and Resolution objects and their string equivalents
+		if(e != null)
 		{
-			this.state = unconfirmedState;
-		}
-		else if(e.equals(NEW_NAME) )
-		{
-			this.state = newState;
-		}
-		else if(e.equals(ASSIGNED_NAME))
-		{
-			this.state = assignedState;
-		}
-		else if(e.equals(RESOLVED_NAME))
-		{
-			this.state = resolvedState;
-		}
-		else if(e.equals(REOPEN_NAME))
-		{
-			this.state = reopenState;
-		}
-		else if(e.equals(CLOSED_NAME))
-		{
-			this.state = closedState;
+			if(e.equals(UNCONFIRMED_NAME))
+			{
+				this.state = unconfirmedState;
+			}
+			else if(e.equals(NEW_NAME) )
+			{
+				this.state = newState;
+			}
+			else if(e.equals(ASSIGNED_NAME))
+			{
+				this.state = assignedState;
+			}
+			else if(e.equals(RESOLVED_NAME))
+			{
+				this.state = resolvedState;
+			}
+			else if(e.equals(REOPEN_NAME))
+			{
+				this.state = reopenState;
+			}
+			else if(e.equals(CLOSED_NAME))
+			{
+				this.state = closedState;
+			}
+			else
+			{
+				//not changing state
+			}
 		}
 	}
 	
