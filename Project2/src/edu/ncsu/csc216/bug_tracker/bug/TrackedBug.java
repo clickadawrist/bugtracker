@@ -251,7 +251,7 @@ public class TrackedBug
 		for(int i = 0; i < this.notes.size(); i++)
 		{
 			note += this.notes.get(i);
-			note += " ------";
+			note += "/n------";
 		}
 		return note;
 	}
