@@ -247,7 +247,7 @@ public class TrackedBug
 	 */
 	public String getNotesString() 
 	{
-		String note = null;
+		String note = "";
 		for(int i = 0; i < this.notes.size(); i++)
 		{
 			note += this.notes.get(i);
