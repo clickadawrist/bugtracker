@@ -1,13 +1,12 @@
 package edu.ncsu.csc216.bug_tracker.command;
 
-import java.util.ArrayList;
-
 /**
+ * For the user this class creates specific commands to use and resolution types to change for the bug.
  * @author Manaka Green and Paul Hawkins
- *
  */
 public class Command {
 	
+	//Translates resolution to it's string constant name equivalent.
 	public static final String R_FIXED = Resolution.FIXED.toString();
 	public static final String R_DUPLICATE = Resolution.DUPLICATE.toString();
 	public static final String R_WONTFIX = Resolution.WONTFIX.toString();
@@ -15,21 +14,23 @@ public class Command {
 	private String developerId;
 	private String note;
 	
+	//Command values used by user to change bug's state,
+	//Resolution reflects user's status with the bug.
 	private CommandValue c;
 	private Resolution resolution;
 	
 	/**
-	 * Throws an Illegal Argument Exception if the command value is null,
-	 * if the command value is resolved and the resolution is null,
-	 * or if the command value is possession and the developer ID is null or an empty
-	 * String.
-	 * 
-	 * @param c
-	 * @param developerId
-	 * @param resolution
-	 * @param note
+	 * Encapsulates user actions, user information and bug information into a command object.
+	 * @param c Command value for the bug 
+	 * @param developer's id Id of the developer
+	 * @param resolution Resolution of the bug
+	 * @param note Note for the bug
+	 * @throws IllegalArgumentException if command value is null, if command
+	 * value is resolved and resolution is null, or if command value is possession and: 
+	 * developer ID is null or empty String
 	 */
-	public Command(CommandValue c, String developerId, Resolution resolution, String note) {
+	public Command(CommandValue c, String developerId, Resolution resolution, String note) 
+	{
 		if(c == null)
 		{
 			throw new IllegalArgumentException();
@@ -53,50 +54,55 @@ public class Command {
 	
 	/**
 	 * Enumeration.
-	 * Has fixed commands.
+	 * Has fixed commands for the bug.
 	 */
-	public static enum CommandValue { 
+	public static enum CommandValue 
+	{ 
 		VOTE, POSSESSION, RESOLVED, VERIFIED, REOPEN, CONFIRM	
 	}
 	
 	/**
 	 * Enumeration.
-	 * Has fixed resolution outcomes.
-	 *
+	 * Has fixed resolution outcomes for the bug.
 	 */
-	public static enum Resolution { 
+	public static enum Resolution 
+	{ 
 		FIXED, DUPLICATE, WONTFIX, WORKSFORME 
 	}
 		
 	/**
-	 * 
-	 * @return command value
+	 * Gets command from the bug.
+	 * @return c Command value for the bug
 	 */
-	public CommandValue getCommand() {
+	public CommandValue getCommand() 
+	{
 		return this.c; 
 	}
 	
 	/**
-	 * 
-	 * @return developer's id
+	 * Gets developer's id from the bug.
+	 * @return developer's id Id of the developer
 	 */
-	public String getDeveloperId() {
+	public String getDeveloperId() 
+	{
 		return this.developerId;
 	}
 	
 	/**
-	 * 
-	 * @return resolution
+	 * Gets resolution from the bug.
+	 * @return resolution Resolution of the bug
 	 */
-	public Resolution getResolution() {
+	public Resolution getResolution() 
+	{
 		return this.resolution;
 	}
 	
 	/**
-	 * 
-	 * @return note for the bug
+	 * Gets note from the bug.
+	 * @return note Note for the bug
 	 */
-	public String getNote() {
+	public String getNote() 
+	{
 		return this.note;
 	}
 }
