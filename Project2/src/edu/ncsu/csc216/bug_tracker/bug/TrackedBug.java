@@ -272,8 +272,8 @@ public class TrackedBug
 	 */
 	public void update(Command c) 
 	{
-		this.getState().updateState(c);
 		resolution = c.getResolution();
+		this.getState().updateState(c);
 		if(c.getNote() != null || c.getNote() != "")
 		{
 			notes.add(c.getNote());
