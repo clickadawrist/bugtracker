@@ -49,6 +49,12 @@ public class TrackedBug
 		this.summary = summary;
 		this.reporter = reporter;
 		this.bugId = counter;
+		setState(UNCONFIRMED_NAME);
+		this.owner = "";
+		this.votes = 0;
+		this.confirmed = false;
+		this.notes = this.getNotes();
+		setResolution(null);
 	}
 	
 	/**
