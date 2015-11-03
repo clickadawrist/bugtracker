@@ -13,7 +13,7 @@ import edu.ncsu.csc216.bug_tracker.xml.BugWriter;
 public class BugTrackerModel {
 
 	/** */
-	private static BugTrackerModel model;
+	private static BugTrackerModel model = null;
 	
 	/** */
 	private BugList bugs;
@@ -23,7 +23,6 @@ public class BugTrackerModel {
 	 */
 	private BugTrackerModel() {
 		bugs = new BugList();
-		model = BugTrackerModel.getInstance();
 	}
 	
 	/**
