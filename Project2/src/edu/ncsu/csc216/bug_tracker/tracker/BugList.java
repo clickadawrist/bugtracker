@@ -15,7 +15,7 @@ import edu.ncsu.csc216.bug_tracker.xml.Bug;
 public class BugList {
 
 	/** List of tracked bugs.  */
-	private ArrayList<TrackedBug> list;
+	private List<TrackedBug> list;
 	
 	/**
 	 * Constructs a new bug list and sets first bug count to 0.
