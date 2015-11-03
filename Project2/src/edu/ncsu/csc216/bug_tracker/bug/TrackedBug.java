@@ -56,7 +56,7 @@ public class TrackedBug
 		this.owner = null;
 		this.votes = 1;
 		this.confirmed = false;
-		this.notes = new ArrayList<String>();
+		this.notes = new ArrayList<String>(0);
 		resolution = null;
 	}
 	
@@ -74,7 +74,7 @@ public class TrackedBug
 		this.votes = z.getVotes();
 		this.confirmed = z.confirmed;
 		setResolution(z.getResolution());
-		this.notes = new ArrayList<String>();
+		this.notes = new ArrayList<String>(0);
 		
 		for(int i = 0; i < z.getNoteList().getNote().size(); i++)
 		{
