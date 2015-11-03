@@ -247,7 +247,13 @@ public class TrackedBug
 	 */
 	public String getNotesString() 
 	{
-		return this.notes.toString();
+		String note = null;
+		for(int i = 0; i < this.notes.size(); i++)
+		{
+			note += this.notes.get(i);
+			note += "------";
+		}
+		return note;
 	}
 	
 	/**
