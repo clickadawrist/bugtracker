@@ -15,14 +15,14 @@ import edu.ncsu.csc216.bug_tracker.xml.Bug;
 public class BugList {
 
 	/** List of tracked bugs.  */
-	private List<TrackedBug> list;
+	private List<TrackedBug> bugs;
 	
 	/**
 	 * Constructs a new bug list and sets first bug count to 0.
 	 */
 	public BugList()  
 	{
-		list = new ArrayList<TrackedBug>();
+		bugs = new ArrayList<TrackedBug>();
 		TrackedBug.setCounter(0);
 	}
 	
@@ -35,7 +35,7 @@ public class BugList {
 	public int addBug(String summary, String reporter)
 	{
 		TrackedBug temp = new TrackedBug(summary, reporter);
-		list.add(temp);
+		bugs.add(temp);
 		TrackedBug.incrementCounter();
 		return temp.getBugId();
 	}
@@ -52,7 +52,7 @@ public class BugList {
 		{
 			TrackedBug temp = new TrackedBug(bugList.get(i));
 			maxId = Math.max(maxId, temp.getBugId());
-			list.add(temp);
+			bugs.add(temp);
 		}
 		TrackedBug.setCounter(maxId + 1);
 	}
@@ -63,7 +63,7 @@ public class BugList {
 	 */
 	public List<TrackedBug> getBugs()
 	{
-		return list;
+		return bugs;
 	}
 	
 	/**
@@ -74,11 +74,11 @@ public class BugList {
 	public List<TrackedBug> getBugsByOwner(String owner)
 	{
 		List<TrackedBug> temp = new ArrayList<TrackedBug>();
-		for(int i = 0; i < list.size(); i++)
+		for(int i = 0; i < bugs.size(); i++)
 		{
-			if(list.get(i).getOwner() == owner)
+			if(bugs.get(i).getOwner() == owner)
 			{
-				temp.add(list.get(i));
+				temp.add(bugs.get(i));
 			}
 		}		
 		return temp;
@@ -91,11 +91,11 @@ public class BugList {
 	 */
 	public TrackedBug getBugById(int id)
 	{
-		for(int i = 0; i < list.size(); i++)
+		for(int i = 0; i < bugs.size(); i++)
 		{
-			if(list.get(i).getBugId() == id)
+			if(bugs.get(i).getBugId() == id)
 			{
-				return list.get(i);
+				return bugs.get(i);
 			}
 		}
 		return null;
@@ -117,11 +117,11 @@ public class BugList {
 	 */
 	public void deleteBugById(int id)
 	{
-		for(int i = 0; i < list.size(); i++)
+		for(int i = 0; i < bugs.size(); i++)
 		{
-			if(list.get(i).getBugId() == id)
+			if(bugs.get(i).getBugId() == id)
 			{
-				list.remove(i);
+				bugs.remove(i);
 			}
 		}
 	}
