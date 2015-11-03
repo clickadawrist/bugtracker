@@ -44,7 +44,7 @@ public class TrackedBug
 	 */
 	public TrackedBug(String summary, String reporter) 
 	{
-		if(summary == null || reporter == null)
+		if(summary == null || summary == "" || reporter == "" || reporter == null)
 		{
 			throw new IllegalArgumentException();
 		}

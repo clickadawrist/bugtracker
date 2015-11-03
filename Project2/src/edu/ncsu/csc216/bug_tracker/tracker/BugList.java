@@ -47,7 +47,7 @@ public class BugList {
 	 */
 	public void addXMLBugs(List<Bug> bugList) 
 	{
-		int maxId = 0;
+		int maxId = 1;
 		for(int i = 0; i < bugList.size(); i++)
 		{
 			TrackedBug temp = new TrackedBug(bugList.get(i));
