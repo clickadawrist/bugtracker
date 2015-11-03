@@ -74,12 +74,12 @@ public class TrackedBug
 		this.votes = z.getVotes();
 		this.confirmed = z.confirmed;
 		setResolution(z.getResolution());
-		this.notes = (ArrayList<String>)z.getNoteList().getNote();
+		this.notes = new ArrayList<String>();
 		
-//		for(int i = 0; i < z.getNoteList().getNote().size(); i++)
-//		{
-//			this.notes.add(z.getNoteList().getNote().get(i));
-//		}
+		for(int i = 0; i < z.getNoteList().getNote().size(); i++)
+		{
+			this.notes.add(z.getNoteList().getNote().get(i));
+		}
 	}
 	
 	/**
@@ -273,7 +273,7 @@ public class TrackedBug
 	public void update(Command c) 
 	{
 		this.getState().updateState(c);
-		if(c.getNote() != null || c.getNote() != "")
+		if(c.getNote() != null && c.getNote() != "")
 		{
 			notes.add(c.getNote());
 		}
