@@ -70,6 +70,7 @@ public class TrackedBug
 		this.votes = z.getVotes();
 		this.confirmed = z.confirmed;
 		this.notes = (ArrayList<String>) z.getNoteList().note;
+		setResolution(z.getResolution());
 	}
 	
 	/**
@@ -327,13 +328,19 @@ public class TrackedBug
 				{
 					if(getOwner() != null)
 					{
+						owner = c.getDeveloperId();
 						setState(ASSIGNED_NAME);
 					}
 					break;
 				}
 				case POSSESSION:
 				{
-					throw new UnsupportedOperationException();
+					if(getOwner() != null)
+					{
+						owner = c.getDeveloperId();
+						setState(ASSIGNED_NAME);
+					}
+					break;
 				}
 				case REOPEN:
 				{
