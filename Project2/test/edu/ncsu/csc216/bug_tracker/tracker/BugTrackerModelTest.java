@@ -10,8 +10,6 @@ import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.ncsu.csc216.course_manager.courses.Course;
-import edu.ncsu.csc216.course_manager.io.CourseRecordIO;
 
 /**
  * Tests BugTrackerModel.
@@ -27,7 +25,7 @@ public class BugTrackerModelTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		super.setUp();
+		//super.setUp();
 		tracker = BugTrackerModel.getInstance();
 	}
 
@@ -36,17 +34,12 @@ public class BugTrackerModelTest {
 	 */
 	@Test
 	public void testGetInstance() {
-		try {
-			
-			model = new BugTrackerModel();
-			
-			} 
-		catch (NullSomethingSomethingException e) 
-		{
-			fail("No ");
-		}
-		
-		
+	//	try {
+	//}
+	//	catch (NullSomethingSomethingException e) 
+	//	{
+	//		fail("No ");
+	//	}
 	}
 
 	/**
