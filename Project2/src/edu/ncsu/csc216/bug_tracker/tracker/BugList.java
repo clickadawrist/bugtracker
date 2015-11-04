@@ -125,7 +125,7 @@ public class BugList {
 	 */
 	public void deleteBugById(int id)
 	{
-		if(bugs.size() > 0)
+		if(bugs.size() > 0 && id < bugs.size() && id >= 0)
 		{
 			for(int i = 0; i < bugs.size(); i++)
 			{
