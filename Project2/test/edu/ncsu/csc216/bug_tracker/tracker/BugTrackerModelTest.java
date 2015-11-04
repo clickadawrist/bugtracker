@@ -2,6 +2,7 @@ package edu.ncsu.csc216.bug_tracker.tracker;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -10,7 +11,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import edu.ncsu.csc216.bug_tracker.bug.TrackedBug;
+import edu.ncsu.csc216.bug_tracker.command.Command;
+import edu.ncsu.csc216.bug_tracker.command.Command.CommandValue;
+import edu.ncsu.csc216.bug_tracker.command.Command.Resolution;
 import edu.ncsu.csc216.bug_tracker.xml.Bug;
+import edu.ncsu.csc216.bug_tracker.xml.BugIOException;
 import edu.ncsu.csc216.bug_tracker.xml.BugReader;
 import edu.ncsu.csc216.bug_tracker.xml.BugWriter;
 
@@ -22,7 +27,7 @@ public class BugTrackerModelTest {
 
 	BugTrackerModel tracker;
 	BugList bugList;
-	//do I need the following: private static BugTrackerModel model; ?
+	
 	
 	Bug b;
 	BugList one;
@@ -37,16 +42,6 @@ public class BugTrackerModelTest {
 	@Before
 	public void setUp() throws Exception {
 		tracker = BugTrackerModel.getInstance();
-//		bugList = new BugList();
-//		bugList.addBug("This bug is killing everyone", "Paul");
-//		bugList.addBug("This bug is eating everyone", "Manaka");
-//		bugList.addBug("This bug is paying everyone", "Trae");
-//		bugList.addBug("This bug is failing everyone", "Stevie");
-//		bugList.addBug("This bug is catching everyone", "James");
-//		bugList.addBug("This bug is loving everyone", "Jason");
-		b = new Bug();
-		b.summary = "This bug is loving everyone";
-		b.reporter = "Jason";
 	}
 
 	/**
@@ -56,7 +51,6 @@ public class BugTrackerModelTest {
 	public void testGetInstance() {
 		assertNotNull(tracker);
 	//assertEquals(double expected, double actual)
-	//How do you test this method??
 		try{
 		} catch(IndexOutOfBoundsException e) {
 			//assertEquals(model, null);
@@ -68,8 +62,8 @@ public class BugTrackerModelTest {
 	 */
 	@Test
 	public void testSaveBugsToFile() {
-		BugWriter writer = new BugWriter("save_bugs.xml");
-		writer.addItem(b);
+		tracker.saveBugsToFile("save_bugs.xml");
+		assertNotNull(new File("save_bugs.xml"));
 //		List<TrackedBug> bList = bugList.getBugs();
 //		for (int i = 0; i < bList.size(); i++) {
 //			writer.addItem(b);
@@ -82,8 +76,8 @@ public class BugTrackerModelTest {
 			writer.addItem(bugs.getBugs().get(i).getXMLBug());
 		}
 		*/
-		//Test this method.
-		//BugList hugs = new BugList();
+		//what the method looks like
+
 		
 		
 		
@@ -94,8 +88,9 @@ public class BugTrackerModelTest {
 	 */
 	@Test
 	public void testLoadBugsFromFile() {
-		//fail("Not yet implemented");
-		BugReader bugReader = new BugReader("save_bugs.xml");
+		tracker.loadBugsFromFile("bug1.xml");
+		Object[][] o = tracker.getBugListAsArray();
+		assertEquals(6, o.length);
 	}
 
 	/**
@@ -103,7 +98,9 @@ public class BugTrackerModelTest {
 	 */
 	@Test
 	public void testCreateNewBugList() {
-		//fail("Not yet implemented");
+		tracker.createNewBugList();
+		Object[][] o = tracker.getBugListAsArray();
+		assertEquals(0, o.length);
 	}
 
 	/**
@@ -123,6 +120,9 @@ public class BugTrackerModelTest {
 	@Test
 	public void testGetBugListByOwnerAsArray() {
 		//fail("Not yet implemented");
+		tracker.loadBugsFromFile("lib/test-files/bug8.xml");
+		Object[][] o = tracker.getBugListByOwnerAsArray("owner");
+		assertEquals(1, o.length);
 	}
 
 	/**
@@ -131,6 +131,9 @@ public class BugTrackerModelTest {
 	@Test
 	public void testGetBugById() {
 		//fail("Not yet implemented");
+		tracker.loadBugsFromFile("lib/test-files/bug8.xml");
+		TrackedBug trackedBug = tracker.getBugById(6);
+		assertEquals("owner", trackedBug.getOwner());
 	}
 
 	/**
@@ -139,6 +142,10 @@ public class BugTrackerModelTest {
 	@Test
 	public void testExecuteCommand() {
 		//fail("Not yet implemented");
+		tracker.loadBugsFromFile("lib/test-files/bug8.xml");
+		tracker.executeCommand(6, new Command(CommandValue.REOPEN, "Potato", Resolution.WONTFIX, "RIP"));
+		Object[][] o = tracker.getBugListAsArray();
+		assertEquals("Open", o[0][1]);
 	}
 
 	/**
