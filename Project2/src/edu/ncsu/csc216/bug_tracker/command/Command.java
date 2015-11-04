@@ -7,6 +7,7 @@ package edu.ncsu.csc216.bug_tracker.command;
 public class Command {
 	
 	//Translates resolution to it's string constant name equivalent.
+<<<<<<< HEAD
 	/** Name of fixed resolution for bug. */
 	public static final String R_FIXED = "Fixed";
 	/** Name of duplicate resolution for bug. */
@@ -14,6 +15,11 @@ public class Command {
 	/** Name of wont-fix resolution for bug. */
 	public static final String R_WONTFIX = "WontFix";
 	/** Name of works-for-me-resolution for bug. */
+=======
+	public static final String R_FIXED = "Fixed";
+	public static final String R_DUPLICATE = "Duplicate";
+	public static final String R_WONTFIX = "WontFix";
+>>>>>>> branch 'master' of git@github.ncsu.edu:engr-csc216-fall2015/csc216-001-P2-100.git
 	public static final String R_WORKSFORME = "WorksForMe";
 	private String developerId;
 	private String note;

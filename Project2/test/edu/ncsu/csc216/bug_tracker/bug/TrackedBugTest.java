@@ -14,27 +14,51 @@ import org.junit.Test;
  */
 public class TrackedBugTest {
 
+	TrackedBug bug;
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-	}
-
-	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.bug.TrackedBug#TrackedBug(java.lang.String, java.lang.String)}.
-	 */
-	@Test
-	public void testTrackedBugStringString() {
-		fail("Not yet implemented");
+		TrackedBug.setCounter(0);
+		bug = new TrackedBug("This bug is killing everyone", "Paul");
 	}
 
 	/**
 	 * Test method for {@link edu.ncsu.csc216.bug_tracker.bug.TrackedBug#TrackedBug(edu.ncsu.csc216.bug_tracker.xml.Bug)}.
 	 */
 	@Test
-	public void testTrackedBugBug() {
-		fail("Not yet implemented");
+	public void testTrackedBug() {
+		try
+		{
+			TrackedBug b = new TrackedBug("","adsfga");
+			fail();
+		}
+		catch(IllegalArgumentException e)
+		{
+			assertEquals(e,e);
+		}
+		
+		try
+		{
+			TrackedBug b = new TrackedBug("adsfga","");
+			fail();
+		}
+		catch(IllegalArgumentException e)
+		{
+			assertEquals(e,e);
+		}
+		
+		TrackedBug.setCounter(0);
+		TrackedBug b = new TrackedBug("me", "you");
+		assertEquals(b.getSummary(), "me");
+		assertEquals(b.getReporter(), "you");
+		assertEquals(b.getBugId(), 0);
+		assertEquals(b.getNotesString(), "");
+		assertEquals(b.getOwner(), null);
+		assertEquals(b.getResolution(), null);
+		assertEquals(b.getState().getStateName(), "Unconfirmed");
+		
 	}
 
 	/**
@@ -42,7 +66,10 @@ public class TrackedBugTest {
 	 */
 	@Test
 	public void testIncrementCounter() {
-		fail("Not yet implemented");
+		assertEquals(0, bug.getBugId());
+		TrackedBug.incrementCounter();
+		TrackedBug b = new TrackedBug("I love this bug", "Traemani");
+		assertEquals(1, bug.getBugId());
 	}
 
 	/**

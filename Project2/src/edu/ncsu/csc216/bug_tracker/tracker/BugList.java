@@ -36,7 +36,7 @@ public class BugList {
 	{
 		TrackedBug temp = new TrackedBug(summary, reporter);
 		bugs.add(temp);
-		TrackedBug.incrementCounter();
+		//TrackedBug.incrementCounter();
 		return temp.getBugId();
 	}
 	
@@ -81,7 +81,7 @@ public class BugList {
 		List<TrackedBug> temp = new ArrayList<TrackedBug>();
 		for(int i = 0; i < bugs.size(); i++)
 		{
-			if(bugs.get(i).getOwner() == owner)
+			if(bugs.get(i).getOwner().equals(owner))
 			{
 				temp.add(bugs.get(i));
 			}
