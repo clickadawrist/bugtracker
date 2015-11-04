@@ -50,6 +50,11 @@ public class Command {
 			throw new IllegalArgumentException();
 		}
 		
+		if(c == CommandValue.POSSESSION && developerId == "")
+		{
+			throw new IllegalArgumentException();
+		}
+		
 		this.c = c;
 		this.developerId = developerId;
 		this.note = note;
