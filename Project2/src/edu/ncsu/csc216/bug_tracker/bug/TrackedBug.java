@@ -304,7 +304,7 @@ public class TrackedBug
 	public void update(Command c) 
 	{
 		this.getState().updateState(c);
-		if(c.getNote() != null && c.getNote().equals(""))
+		if(c.getNote() != null && !c.getNote().equals(""))
 		{
 			notes.add(c.getNote());
 		}
