@@ -45,7 +45,7 @@ public class Command {
 			throw new IllegalArgumentException();
 		}
 		
-		if(c == CommandValue.POSSESSION && developerId == null || c == CommandValue.POSSESSION && developerId.equals(""))
+		if(c == CommandValue.POSSESSION && developerId == null || developerId.equals(""))
 		{
 			throw new IllegalArgumentException();
 		}
