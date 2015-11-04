@@ -146,7 +146,7 @@ public class TrackedBug
 			}
 			else
 			{
-				//not changing state
+				throw new IllegalArgumentException();
 			}
 		}
 	}
