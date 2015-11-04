@@ -42,10 +42,11 @@ public class TrackedBugTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.bug.TrackedBug#TrackedBug(edu.ncsu.csc216.bug_tracker.xml.Bug)}.
+	 * Tests the constructors for the Tracked Bug class
 	 */
 	@Test
 	public void testTrackedBug() {
+		//Test constructing a bug with a blank summary
 		try
 		{
 			@SuppressWarnings("unused")
@@ -57,6 +58,7 @@ public class TrackedBugTest {
 			assertEquals(e, e);
 		}
 		
+		//Test constructing a bug with a blank reporter
 		try
 		{
 			@SuppressWarnings("unused")
@@ -68,6 +70,7 @@ public class TrackedBugTest {
 			assertEquals(e, e);
 		}
 		
+		//Tests a valid constructor
 		TrackedBug.setCounter(0);
 		TrackedBug b = new TrackedBug("me", "you");
 		assertEquals(b.getSummary(), "me");
@@ -81,10 +84,11 @@ public class TrackedBugTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.bug.TrackedBug#incrementCounter()}.
+	 * Tests the method for incrementing the counter
 	 */
 	@Test
 	public void testIncrementCounter() {
+		//Tests that each bug ID is one more than the last
 		assertEquals(0, bug.getBugId());
 		assertEquals(1, bug1.getBugId());
 		assertEquals(2, bug2.getBugId());
@@ -94,7 +98,7 @@ public class TrackedBugTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.bug.TrackedBug#getBugId()}.
+	 * Tests the getter for BugID
 	 */
 	@Test
 	public void testGetBugId() {
@@ -102,7 +106,7 @@ public class TrackedBugTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.bug.TrackedBug#getState()}.
+	 * Tests the getter for BugState
 	 */
 	@Test
 	public void testGetState() {
@@ -110,37 +114,46 @@ public class TrackedBugTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.bug.TrackedBug#getResolution()}.
+	 * Tests the getter for the resolution of the bug
 	 */
 	@Test
 	public void testGetResolution() {
+		//Tests that the beginning resolution is null
 		assertEquals(null, bug.getResolution());
+		
+		//Updates the resolution to duplicate
 		bug.update(new Command(CommandValue.CONFIRM, null, null, null));
 		bug.update(new Command(CommandValue.POSSESSION, "Traemani", null, null));
 		bug.update(new Command(CommandValue.RESOLVED, null, Resolution.DUPLICATE, null));
+		
+		//Tests the resolution is now duplicate
 		assertEquals(Resolution.DUPLICATE, bug.getResolution());
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.bug.TrackedBug#getResolutionString()}.
+	 * Tests that the resolution returns the correct string
 	 */
 	@Test
 	public void testGetResolutionString() {
+		//Changes the resolution to Duplicate and checks that the string returned is "Duplicate"
 		bug.update(new Command(CommandValue.CONFIRM, null, null, null));
 		bug.update(new Command(CommandValue.POSSESSION, "Traemani", null, null));
 		bug.update(new Command(CommandValue.RESOLVED, null, Resolution.DUPLICATE, null));
 		assertEquals("Duplicate", bug.getResolutionString());
 		
+		//Changes the resolution to Fixed and checks that the string returned is "Fixed"
 		bug1.update(new Command(CommandValue.CONFIRM, null, null, null));
 		bug1.update(new Command(CommandValue.POSSESSION, "Traemani", null, null));
 		bug1.update(new Command(CommandValue.RESOLVED, null, Resolution.FIXED, null));
 		assertEquals("Fixed", bug1.getResolutionString());
 		
+		//Changes the resolution to WontFix and checks that the string returned is "WontFix"
 		bug2.update(new Command(CommandValue.CONFIRM, null, null, null));
 		bug2.update(new Command(CommandValue.POSSESSION, "Traemani", null, null));
 		bug2.update(new Command(CommandValue.RESOLVED, null, Resolution.WONTFIX, null));
 		assertEquals("WontFix", bug2.getResolutionString());
 		
+		//Changes the resolution to WorksForMe and checks that the string returned is "WorksForMe"
 		bug3.update(new Command(CommandValue.CONFIRM, null, null, null));
 		bug3.update(new Command(CommandValue.POSSESSION, "Traemani", null, null));
 		bug3.update(new Command(CommandValue.RESOLVED, null, Resolution.WORKSFORME, null));
@@ -148,18 +161,23 @@ public class TrackedBugTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.bug.TrackedBug#getOwner()}.
+	 * Tests the getter for the bug's owner
 	 */
 	@Test
 	public void testGetOwner() {
+		//Checks that the owner is null in the beginning
 		assertEquals(null, bug.getOwner());
+		
+		//Assigns the owner to Traemani
 		bug.update(new Command(CommandValue.CONFIRM, null, null, null));
 		bug.update(new Command(CommandValue.POSSESSION, "Traemani", null, null));
+		
+		//Checks that the owner is Traemani
 		assertEquals("Traemani", bug.getOwner());
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.bug.TrackedBug#getSummary()}.
+	 * Tests the getter for the bug summary
 	 */
 	@Test
 	public void testGetSummary() {
@@ -167,7 +185,7 @@ public class TrackedBugTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.bug.TrackedBug#getVotes()}.
+	 * Tests the getter for the bugs votes
 	 */
 	@Test
 	public void testGetVotes() {
@@ -175,7 +193,7 @@ public class TrackedBugTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.bug.TrackedBug#getReporter()}.
+	 * Tests the getter for the bugs reporter
 	 */
 	@Test
 	public void testGetReporter() {
@@ -183,11 +201,14 @@ public class TrackedBugTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.bug.TrackedBug#getNotes()}.
+	 * Tests the getter for the bug notes
 	 */
 	@Test
 	public void testGetNotes() {
+		//Creates a temp array with the same notes as the bug
 		ArrayList<String> temp = new ArrayList<String>();
+		
+		//Adds note and tests that the notes arrays are equal
 		assertEquals(temp, bug.getNotes());
 		bug.update(new Command(CommandValue.VOTE, null, null, "note 1"));
 		temp.add("note 1");
@@ -200,41 +221,63 @@ public class TrackedBugTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.bug.TrackedBug#getNotesString()}.
+	 * Tests the getter for the bug notes string
 	 */
 	@Test
 	public void testGetNotesString() {
+		//Tests that the beginning notes string is empty
 		assertEquals("", bug.getNotesString());
+		
+		//Adds 2 notes to the bug
 		bug.update(new Command(CommandValue.VOTE, null, null, "note 1"));
 		bug.update(new Command(CommandValue.VOTE, null, null, "note 2"));
+		
+		//Tests that the bug notes string is what it is supposed to be
 		assertEquals("note 1\n------\nnote 2\n------\n", bug.getNotesString());
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.bug.TrackedBug#isConfirmed()}.
+	 * Tests the method to check if the bug is confirmed or not
 	 */
 	@Test
 	public void testIsConfirmed() {
+		//Tests that the bug is unconfirmed at the beginning
 		assertFalse(bug.isConfirmed());
+		
+		//Confirms the bug
 		bug.update(new Command(CommandValue.CONFIRM, null, null, null));
+		
+		//Tests that the bug is confirmed
 		assertTrue(bug.isConfirmed());
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.bug.TrackedBug#update(edu.ncsu.csc216.bug_tracker.command.Command)}.
+	 * Tests the method to update the bug's state and attributes
 	 */
 	@Test
 	public void testUpdate() {
+		//Checks that the bug state is unconfirmed at the beginning
 		assertEquals("Unconfirmed", bug.getState().getStateName());
+		
+		//Votes on the bug and makes sure the bug has 2 votes and is
+		//still unconfirmed
 		bug.update(new Command(CommandValue.VOTE, null, null, null));
 		assertEquals("Unconfirmed", bug.getState().getStateName());
 		assertEquals(2, bug.getVotes());
+		
+		//Votes again and makes sure the bug has 3 votes and is in the 
+		//new state
 		bug.update(new Command(CommandValue.VOTE, null, null, null));
 		assertEquals("New", bug.getState().getStateName());
 		assertEquals(3, bug.getVotes());
+		
+		//Assigns the bug an owner of Traemani and checks that the state is 
+		//Assigned and the owner is Traemani
 		bug.update(new Command(CommandValue.POSSESSION, "Traemani", null, null));
 		assertEquals("Assigned", bug.getState().getStateName());
 		assertEquals("Traemani", bug.getOwner());
+		
+		
 		bug.update(new Command(CommandValue.RESOLVED, null, Resolution.FIXED, null));
 		assertEquals("Resolved", bug.getState().getStateName());
 		assertEquals(Resolution.FIXED, bug.getResolution());
@@ -542,7 +585,7 @@ public class TrackedBugTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.bug.TrackedBug#getXMLBug()}.
+	 * Tests the getter for changing the trackedbug to an XMLBug
 	 */
 	@Test
 	public void testGetXMLBug() {
