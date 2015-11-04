@@ -50,7 +50,7 @@ public class Command {
 			throw new IllegalArgumentException();
 		}
 		
-		if(c == CommandValue.POSSESSION && developerId == "")
+		if(c == CommandValue.POSSESSION && developerId.equals(""))
 		{
 			throw new IllegalArgumentException();
 		}
