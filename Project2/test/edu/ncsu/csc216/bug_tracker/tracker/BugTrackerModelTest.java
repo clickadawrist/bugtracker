@@ -51,13 +51,13 @@ public class BugTrackerModelTest {
 		//}		
 	}
 
-	/**
-	 * Tests saveBugsToFile method.
-	 */
-	@Test
-	public void testSaveBugsToFile() {
-		tracker.saveBugsToFile("save_bugs.xml");
-		assertTrue(true);
+//	/**
+//	 * Tests saveBugsToFile method.
+//	 */
+//	@Test
+//	public void testSaveBugsToFile() {
+//		tracker.saveBugsToFile("save_bugs.xml");
+//		assertTrue(true);
 		//assertNotNull(new File("save_bugs.xml"));
 //		List<TrackedBug> bList = bugList.getBugs();
 //		for (int i = 0; i < bList.size(); i++) {
@@ -76,18 +76,18 @@ public class BugTrackerModelTest {
 		
 		
 		
-	}
+//	}
 
-	/**
-	 * Tests loadBugsFromFile method.
-	 */
-	@Test
-	public void testLoadBugsFromFile() {
-		assertTrue(true);
+//	/**
+//	 * Tests loadBugsFromFile method.
+//	 */
+//	@Test
+//	public void testLoadBugsFromFile() {
+//		assertTrue(true);
 //		tracker.loadBugsFromFile("bug1.xml");
 //		Object[][] o = tracker.getBugListAsArray();
 //		assertEquals(6, o.length);
-	}
+//	}
 
 	/**
 	 * Tests createNewBugList method.
@@ -110,58 +110,58 @@ public class BugTrackerModelTest {
 		assertEquals(2, trackerArray.length);
 	}
 
-	/**
-	 * Tests getBugListByOwnerAsArray method.
-	 */
-	@Test
-	public void testGetBugListByOwnerAsArray() {
-		assertTrue(true);
+//	/**
+//	 * Tests getBugListByOwnerAsArray method.
+//	 */
+//	@Test
+//	public void testGetBugListByOwnerAsArray() {
+//		assertTrue(true);
 		//fail("Not yet implemented");
 //		tracker.loadBugsFromFile("lib/test-files/bug8.xml");
 //		Object[][] o = tracker.getBugListByOwnerAsArray("owner");
 //		assertEquals(1, o.length);
-	}
+//	}
 
-	/**
-	 * Tests getBugById method.
-	 */
-	@Test
-	public void testGetBugById() {
-		assertTrue(true);
+//	/**
+//	 * Tests getBugById method.
+//	 */
+//	@Test
+//	public void testGetBugById() {
+//		assertTrue(true);
 		//fail("Not yet implemented");
 //		tracker.loadBugsFromFile("lib/test-files/bug8.xml");
 //		TrackedBug trackedBug = tracker.getBugById(6);
 //		assertEquals("owner", trackedBug.getOwner());
-	}
+//	}
 
-	/**
-	 * Tests executeCommand method.
-	 */
-	@Test
-	public void testExecuteCommand() {
-		assertTrue(true);
-		//fail("Not yet implemented");
+//	/**
+//	 * Tests executeCommand method.
+//	 */
+//	@Test
+//	public void testExecuteCommand() {
+//		assertTrue(true);
+//		//fail("Not yet implemented");
 //		tracker.loadBugsFromFile("lib/test-files/bug8.xml");
 //		tracker.executeCommand(6, new Command(CommandValue.REOPEN, "Potato", Resolution.WONTFIX, "RIP"));
 //		Object[][] o = tracker.getBugListAsArray();
 //		assertEquals("Open", o[0][1]);
-	}
+//	}
 
-	/**
-	 * Tests deleteBugById method.
-	 */
-	@Test
-	public void testDeleteBugById() {
-		//fail("Not yet implemented");
-		assertTrue(true);
-	}
+//	/**
+//	 * Tests deleteBugById method.
+//	 */
+//	@Test
+//	public void testDeleteBugById() {
+//		//fail("Not yet implemented");
+//		assertTrue(true);
+//	}
 
-	/**
-	 * Tests addBugToList method.
-	 */
-	@Test
-	public void testAddBugToList() {
-		//fail("Not yet implemented");
-		assertTrue(true);
-	}
+//	/**
+//	 * Tests addBugToList method.
+//	 */
+//	@Test
+//	public void testAddBugToList() {
+//		//fail("Not yet implemented");
+//		assertTrue(true);
+//	}
 }
