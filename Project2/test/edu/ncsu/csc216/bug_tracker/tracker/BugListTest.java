@@ -24,7 +24,8 @@ public class BugListTest {
 	BugList bugs;
 	
 	/**
-	 * @throws java.lang.Exception
+	 * sets up a bug list to test
+	 * @throws Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
@@ -32,7 +33,7 @@ public class BugListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.tracker.BugList#addBug(java.lang.String, java.lang.String)}.
+	 * Tests the add bug method
 	 */
 	@Test
 	public void testAddBug() {
@@ -42,7 +43,7 @@ public class BugListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.tracker.BugList#addXMLBug(java.util.List)}.
+	 * Tests the addXMLBug method
 	 */
 	@Test
 	public void testAddXMLBug() {
@@ -60,7 +61,7 @@ public class BugListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.tracker.BugList#getBugs()}.
+	 * Tests the get bugs method
 	 */
 	@Test
 	public void testGetBugs() {
@@ -70,7 +71,7 @@ public class BugListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.tracker.BugList#getBugsByOwner(java.lang.String)}.
+	 * Tests the getBugsByOwner method
 	 */
 	@Test
 	public void testGetBugsByOwner() {
@@ -95,7 +96,7 @@ public class BugListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.tracker.BugList#getBugById(int)}.
+	 * Tests the getBugById method
 	 */
 	@Test
 	public void testGetBugById() {
@@ -109,7 +110,7 @@ public class BugListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.tracker.BugList#executeCommand(int, edu.ncsu.csc216.bug_tracker.command.Command)}.
+	 * tests the executeCommand method
 	 */
 	@Test
 	public void testExecuteCommand() {
@@ -129,7 +130,7 @@ public class BugListTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.tracker.BugList#deleteBugById(int)}.
+	 * Tests the deleteBugById method
 	 */
 	@Test
 	public void testDeleteBugById() {

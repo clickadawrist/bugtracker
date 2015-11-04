@@ -27,7 +27,7 @@ public class TrackedBugTest {
 	TrackedBug bug5;
 	
 	/**
-	 * Sets up test. 
+	 * Sets up 6 test bugs. 
 	 * @throws Exception 
 	 */
 	@Before
@@ -277,31 +277,51 @@ public class TrackedBugTest {
 		assertEquals("Assigned", bug.getState().getStateName());
 		assertEquals("Traemani", bug.getOwner());
 		
-		
+		//Resolves the bug with the resolution of Fixed and checks that the 
+		//state is Resolved and the resolution is Fixed
 		bug.update(new Command(CommandValue.RESOLVED, null, Resolution.FIXED, null));
 		assertEquals("Resolved", bug.getState().getStateName());
 		assertEquals(Resolution.FIXED, bug.getResolution());
+		
+		//Verifies the bug and checks that the state is Closed
 		bug.update(new Command(CommandValue.VERIFIED, null, null, null));
 		assertEquals("Closed", bug.getState().getStateName());
+		
+		//Reopens the bug and checks that the state is Unconfirmed
 		bug.update(new Command(CommandValue.REOPEN, null, null, null));
 		assertEquals("Unconfirmed", bug.getState().getStateName());
+		
+		//Votes on the bug and checks that the state is Assigned
 		bug.update(new Command(CommandValue.VOTE, null, null, null));
 		assertEquals("Assigned", bug.getState().getStateName());
+		
+		//Resolves the bug with the WontFix resolution and checks that the
+		//state is Resolved and the resolution is WontFix
 		bug.update(new Command(CommandValue.RESOLVED, null, Resolution.WONTFIX, null));
 		assertEquals("Closed", bug.getState().getStateName());
 		assertEquals(Resolution.WONTFIX, bug.getResolution());
 		
+		//Confirms bug1 and checks that the state is New
 		bug1.update(new Command(CommandValue.CONFIRM, null, null, null));
 		assertEquals("New", bug1.getState().getStateName());
+		
+		//Assigns bug1 the owner of Traemani and checks that the state is assigned
 		bug1.update(new Command(CommandValue.POSSESSION, "Traemani", null, null));
 		assertEquals("Assigned", bug1.getState().getStateName());
+		
+		//Resolves bug1 with the Fixed resolution and checks that the state is Resolved
 		bug1.update(new Command(CommandValue.RESOLVED, null, Resolution.FIXED, null));
 		assertEquals("Resolved", bug1.getState().getStateName());
+		
+		//Reopens bug1 and checks that the state is Reopen
 		bug1.update(new Command(CommandValue.REOPEN, null, null, null));
 		assertEquals("Reopen", bug1.getState().getStateName());
+		
+		//Assigns bug1 the owner of Manaka and checks that the state is Assigned
 		bug1.update(new Command(CommandValue.POSSESSION, "Manaka", null, null));
 		assertEquals("Assigned", bug1.getState().getStateName());
 		
+		//Checks that the Possession command is invalid from the Unconfirmed state
 		try
 		{
 			bug2.update(new Command(CommandValue.POSSESSION, "Manaka", null, null));
@@ -312,6 +332,7 @@ public class TrackedBugTest {
 			assertEquals("Unconfirmed", bug2.getState().getStateName());
 		}
 		
+		//Checks that the Reopen command is invalid from the Unconfirmed state
 		try
 		{
 			bug2.update(new Command(CommandValue.REOPEN, null, null, null));
@@ -322,6 +343,7 @@ public class TrackedBugTest {
 			assertEquals("Unconfirmed", bug2.getState().getStateName());
 		}
 		
+		//Checks that the Resolved command is invalid from the Unconfirmed state
 		try
 		{
 			bug2.update(new Command(CommandValue.RESOLVED, null, Resolution.DUPLICATE, null));
@@ -332,6 +354,7 @@ public class TrackedBugTest {
 			assertEquals("Unconfirmed", bug2.getState().getStateName());
 		}
 		
+		//Checks that the Verified command is invalid from the Unconfirmed state
 		try
 		{
 			bug2.update(new Command(CommandValue.VERIFIED, null, null, null));
@@ -342,8 +365,10 @@ public class TrackedBugTest {
 			assertEquals("Unconfirmed", bug2.getState().getStateName());
 		}
 		
+		//Changes the bug's state to New
 		bug2.update(new Command(CommandValue.CONFIRM, null, null, null));
 		
+		//Checks that the Confirm command is invalid from the New state
 		try
 		{
 			bug2.update(new Command(CommandValue.CONFIRM, null, null, null));
@@ -354,6 +379,7 @@ public class TrackedBugTest {
 			assertEquals("New", bug2.getState().getStateName());
 		}
 		
+		//Checks that the Reopen command is invalid from the New state
 		try
 		{
 			bug2.update(new Command(CommandValue.REOPEN, null, null, null));
@@ -364,6 +390,7 @@ public class TrackedBugTest {
 			assertEquals("New", bug2.getState().getStateName());
 		}
 		
+		//Checks that the Resolved command is invalid from the New state
 		try
 		{
 			bug2.update(new Command(CommandValue.RESOLVED, null, Resolution.DUPLICATE, null));
@@ -374,6 +401,7 @@ public class TrackedBugTest {
 			assertEquals("New", bug2.getState().getStateName());
 		}
 		
+		//Checks that the Verified command is invalid from the New state
 		try
 		{
 			bug2.update(new Command(CommandValue.VERIFIED, null, null, null));
@@ -384,6 +412,7 @@ public class TrackedBugTest {
 			assertEquals("New", bug2.getState().getStateName());
 		}
 		
+		//Checks that the Vote command is invalid from the New state
 		try
 		{
 			bug2.update(new Command(CommandValue.VOTE, null, null, null));
@@ -394,8 +423,10 @@ public class TrackedBugTest {
 			assertEquals("New", bug2.getState().getStateName());
 		}
 		
+		//Changes the bug's state to Assigned
 		bug2.update(new Command(CommandValue.POSSESSION, "Traemani", null, null));
 		
+		//Checks that the Confirm command is invalid from the Assigned state
 		try
 		{
 			bug2.update(new Command(CommandValue.CONFIRM, null, null, null));
@@ -406,6 +437,7 @@ public class TrackedBugTest {
 			assertEquals("Assigned", bug2.getState().getStateName());
 		}
 		
+		//Checks that the Possission command is invalid from the Assigned state
 		try
 		{
 			bug2.update(new Command(CommandValue.POSSESSION, "Traemani", null, null));
@@ -416,6 +448,7 @@ public class TrackedBugTest {
 			assertEquals("Assigned", bug2.getState().getStateName());
 		}
 		
+		//Checks that the Reopen command is invalid from the Assigned state
 		try
 		{
 			bug2.update(new Command(CommandValue.REOPEN, null, null, null));
@@ -426,6 +459,7 @@ public class TrackedBugTest {
 			assertEquals("Assigned", bug2.getState().getStateName());
 		}
 		
+		//Checks that the Verified command is invalid from the Assigned state
 		try
 		{
 			bug2.update(new Command(CommandValue.VERIFIED, null, null, null));
@@ -436,6 +470,7 @@ public class TrackedBugTest {
 			assertEquals("Assigned", bug2.getState().getStateName());
 		}
 		
+		//Checks that the Vote command is invalid from the Assigned state
 		try
 		{
 			bug2.update(new Command(CommandValue.VOTE, null, null, null));
@@ -446,8 +481,10 @@ public class TrackedBugTest {
 			assertEquals("Assigned", bug2.getState().getStateName());
 		}
 		
+		//Changes the bug's state to Resolved
 		bug2.update(new Command(CommandValue.RESOLVED, null, Resolution.FIXED, null));
 		
+		//Checks that the Confirm command is invalid from the Resolved state
 		try
 		{
 			bug2.update(new Command(CommandValue.CONFIRM, null, null, null));
@@ -458,6 +495,7 @@ public class TrackedBugTest {
 			assertEquals("Resolved", bug2.getState().getStateName());
 		}
 		
+		//Checks that the Possession command is invalid from the Resolved state
 		try
 		{
 			bug2.update(new Command(CommandValue.POSSESSION, "Traemani", null, null));
@@ -468,6 +506,7 @@ public class TrackedBugTest {
 			assertEquals("Resolved", bug2.getState().getStateName());
 		}
 		
+		//Checks that the Resolved command is invalid from the Resolved state
 		try
 		{
 			bug2.update(new Command(CommandValue.RESOLVED, null, Resolution.DUPLICATE, null));
@@ -478,6 +517,7 @@ public class TrackedBugTest {
 			assertEquals("Resolved", bug2.getState().getStateName());
 		}
 		
+		//Checks that the Vote command is invalid from the Resolved state
 		try
 		{
 			bug2.update(new Command(CommandValue.VOTE, null, null, null));
@@ -488,8 +528,10 @@ public class TrackedBugTest {
 			assertEquals("Resolved", bug2.getState().getStateName());
 		}
 		
+		//Changes bug's state to Closed
 		bug2.update(new Command(CommandValue.VERIFIED, null, null, null));
 		
+		//Checks that the Confirm command is invalid from the Closed state
 		try
 		{
 			bug2.update(new Command(CommandValue.CONFIRM, null, null, null));
@@ -500,6 +542,7 @@ public class TrackedBugTest {
 			assertEquals("Closed", bug2.getState().getStateName());
 		}
 		
+		//Checks that the Possession command is invalid from the Closed state
 		try
 		{
 			bug2.update(new Command(CommandValue.POSSESSION, "Traemani", null, null));
@@ -510,6 +553,7 @@ public class TrackedBugTest {
 			assertEquals("Closed", bug2.getState().getStateName());
 		}
 		
+		//Checks that the Resolved command is invalid from the Closed state
 		try
 		{
 			bug2.update(new Command(CommandValue.RESOLVED, null, Resolution.DUPLICATE, null));
@@ -520,6 +564,7 @@ public class TrackedBugTest {
 			assertEquals("Closed", bug2.getState().getStateName());
 		}
 		
+		//Checks that the Verified command is invalid from the Closed state
 		try
 		{
 			bug2.update(new Command(CommandValue.VERIFIED, null, null, null));
@@ -530,6 +575,7 @@ public class TrackedBugTest {
 			assertEquals("Closed", bug2.getState().getStateName());
 		}
 		
+		//Checks that the Vote command is invalid from the Closed state
 		try
 		{
 			bug2.update(new Command(CommandValue.VOTE, null, null, null));
@@ -540,8 +586,10 @@ public class TrackedBugTest {
 			assertEquals("Closed", bug2.getState().getStateName());
 		}
 		
+		//Changes the bug's state to Reopen
 		bug2.update(new Command(CommandValue.REOPEN, null, null, null));
 		
+		//Checks that the Confirm command is invalid from the Reopen state
 		try
 		{
 			bug2.update(new Command(CommandValue.CONFIRM, null, null, null));
@@ -552,6 +600,7 @@ public class TrackedBugTest {
 			assertEquals("Reopen", bug2.getState().getStateName());
 		}
 		
+		//Checks that the Reopen command is invalid from the Reopen state
 		try
 		{
 			bug2.update(new Command(CommandValue.REOPEN, null, null, null));
@@ -562,6 +611,7 @@ public class TrackedBugTest {
 			assertEquals("Reopen", bug2.getState().getStateName());
 		}
 		
+		//Checks that the Verified command is invalid from the Reopen state
 		try
 		{
 			bug2.update(new Command(CommandValue.VERIFIED, null, null, null));
@@ -572,6 +622,7 @@ public class TrackedBugTest {
 			assertEquals("Reopen", bug2.getState().getStateName());
 		}
 		
+		//Checks that the Vote command is invalid from the Reopen state
 		try
 		{
 			bug2.update(new Command(CommandValue.VOTE, null, null, null));
@@ -585,12 +636,17 @@ public class TrackedBugTest {
 	}
 
 	/**
-	 * Tests the getter for changing the trackedbug to an XMLBug
+	 * Tests the getter for changing the TrackedBug to an XMLBug
 	 */
 	@Test
 	public void testGetXMLBug() {
+		//Creates an empty bug
 		Bug buggy = new Bug();
+		
+		//Sets the bug equal to the bug.getXMLBug()
 		buggy = bug.getXMLBug();
+		
+		//Checks that all of the fields are equal between the bug and TrackedBug
 		assertEquals(0, buggy.getId());
 		assertEquals(null, buggy.getOwner());
 		assertEquals("Paul", buggy.getReporter());
@@ -599,10 +655,13 @@ public class TrackedBugTest {
 		assertEquals("This bug is killing everyone", buggy.getSummary());
 		assertEquals(1, buggy.getVotes());
 		
+		//Updates the state, owner, and resolution
 		bug.update(new Command(CommandValue.CONFIRM, null, null, "note 1"));
 		bug.update(new Command(CommandValue.POSSESSION, "Traemani", null, "note 2"));
 		bug.update(new Command(CommandValue.RESOLVED, null, Resolution.DUPLICATE, null));
 		
+		//Sets the bug equal to the updated TrackedBug and checks that all of
+		//the fields are equal
 		buggy = bug.getXMLBug();
 		assertEquals(0, buggy.getId());
 		assertEquals("note 1", buggy.getNoteList().getNote().get(0));

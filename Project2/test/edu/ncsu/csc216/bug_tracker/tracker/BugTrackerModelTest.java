@@ -31,9 +31,9 @@ public class BugTrackerModelTest {
 	BugTrackerModel a;
 	
 	/**
-	 * Set up bugs here to help testing with bug tracker model?
+	 * Set up bugs here to help testing with bug tracker model
 	 * 
-	 * @throws java.lang.Exception
+	 * @throws Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
