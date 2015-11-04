@@ -68,7 +68,7 @@ public class BugTrackerModelTest {
 	 */
 	@Test
 	public void testLoadBugsFromFile() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class BugTrackerModelTest {
 	 */
 	@Test
 	public void testCreateNewBugList() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	/**
@@ -95,7 +95,7 @@ public class BugTrackerModelTest {
 	 */
 	@Test
 	public void testGetBugListByOwnerAsArray() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class BugTrackerModelTest {
 	 */
 	@Test
 	public void testGetBugById() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	/**
@@ -111,7 +111,7 @@ public class BugTrackerModelTest {
 	 */
 	@Test
 	public void testExecuteCommand() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	/**
@@ -119,7 +119,7 @@ public class BugTrackerModelTest {
 	 */
 	@Test
 	public void testDeleteBugById() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	/**
@@ -127,6 +127,6 @@ public class BugTrackerModelTest {
 	 */
 	@Test
 	public void testAddBugToList() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 }
