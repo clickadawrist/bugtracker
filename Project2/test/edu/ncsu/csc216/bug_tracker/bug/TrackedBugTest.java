@@ -8,6 +8,10 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.ncsu.csc216.bug_tracker.command.Command;
+import edu.ncsu.csc216.bug_tracker.command.Command.CommandValue;
+import edu.ncsu.csc216.bug_tracker.command.Command.Resolution;
+
 /**
  * @author tmanthawk
  *
@@ -84,7 +88,7 @@ public class TrackedBugTest {
 	 */
 	@Test
 	public void testGetState() {
-		fail("Not yet implemented");
+		assertEquals("Unconfirmed", bug.getState().getStateName());
 	}
 
 	/**
@@ -92,7 +96,11 @@ public class TrackedBugTest {
 	 */
 	@Test
 	public void testGetResolution() {
-		fail("Not yet implemented");
+		assertEquals(null, bug.getResolution());
+		bug.update(new Command(CommandValue.CONFIRM, null, null, null));
+		bug.update(new Command(CommandValue.POSSESSION, "Traemani", null, null));
+		bug.update(new Command(CommandValue.RESOLVED,null,Resolution.DUPLICATE,null));
+		assertEquals(Resolution.DUPLICATE, bug.getResolution());
 	}
 
 	/**
