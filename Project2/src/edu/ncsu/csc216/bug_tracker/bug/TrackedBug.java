@@ -194,6 +194,10 @@ public class TrackedBug
 		{
 			res = Command.R_WORKSFORME;
 		}
+		else
+		{
+			throw new IllegalArgumentException();
+		}
 		return res;
 	}
 	
