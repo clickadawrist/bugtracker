@@ -47,10 +47,10 @@ public class BugTrackerModelTest {
 	public void testGetInstance() {
 		assertNotNull(tracker);
 	//assertEquals(double expected, double actual)
-		try{
-		} catch(IndexOutOfBoundsException e) {
+		//try{
+		//} catch(IndexOutOfBoundsException e) {
 			//assertEquals(model, null);
-		}		
+		//}		
 	}
 
 	/**
@@ -59,7 +59,7 @@ public class BugTrackerModelTest {
 	@Test
 	public void testSaveBugsToFile() {
 		tracker.saveBugsToFile("save_bugs.xml");
-		assertNotNull(new File("save_bugs.xml"));
+		//assertNotNull(new File("save_bugs.xml"));
 //		List<TrackedBug> bList = bugList.getBugs();
 //		for (int i = 0; i < bList.size(); i++) {
 //			writer.addItem(b);

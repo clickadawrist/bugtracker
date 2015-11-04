@@ -19,7 +19,7 @@ public class BugTrackerModel {
 	private BugList bugs;
 	
 	/**
-	 * 
+	 * Initializes the bugs bugList
 	 */
 	private BugTrackerModel() {
 		bugs = new BugList();
