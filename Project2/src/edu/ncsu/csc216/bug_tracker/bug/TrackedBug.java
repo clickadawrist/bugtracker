@@ -166,7 +166,7 @@ public class TrackedBug
 	 */
 	public String getResolutionString() 
 	{
-		String res = "";
+		String res = null;
 		
 		if(resolution == Resolution.DUPLICATE)
 		{
