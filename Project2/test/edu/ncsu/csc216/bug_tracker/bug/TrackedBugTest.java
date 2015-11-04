@@ -67,9 +67,8 @@ public class TrackedBugTest {
 	@Test
 	public void testIncrementCounter() {
 		assertEquals(0, bug.getBugId());
-		TrackedBug.incrementCounter();
 		TrackedBug b = new TrackedBug("I love this bug", "Traemani");
-		assertEquals(1, bug.getBugId());
+		assertEquals(1, b.getBugId());
 	}
 
 	/**
@@ -77,7 +76,7 @@ public class TrackedBugTest {
 	 */
 	@Test
 	public void testGetBugId() {
-		fail("Not yet implemented");
+		assertEquals(0, bug.getBugId());
 	}
 
 	/**
