@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import edu.ncsu.csc216.bug_tracker.command.Command;
 import edu.ncsu.csc216.bug_tracker.command.Command.Resolution;
 import edu.ncsu.csc216.bug_tracker.xml.Bug;
+import edu.ncsu.csc216.bug_tracker.xml.NoteList;
 
 /**
  * The TrackedBug class creates a new TrackedBug from a Bug object.
@@ -27,24 +28,33 @@ public class TrackedBug
 	private final BugState resolvedState = new ResolvedState();
 	private final BugState reopenState = new ReopenState();
 	private final BugState closedState = new ClosedState();
+	
+	/**Name of unconfirmed bug state- "unconfirmed". */
 	public static final String UNCONFIRMED_NAME = "Unconfirmed";
+	/**Name of new bug state - "new". */
 	public static final String NEW_NAME = "New";
+	/**Name of assigned bug state - "assigned". */
 	public static final String ASSIGNED_NAME = "Assigned";
+	/**Name of resolved bug state - "resolved". */
 	public static final String RESOLVED_NAME = "Resolved";
+	/**Name of reopened bug state - "reopen". */
 	public static final String REOPEN_NAME = "Reopen";
+	/**Name of closed bug state - "closed". */
 	public static final String CLOSED_NAME = "Closed";
+	/**Voting threshold constant. */
 	public static final int VOTE_THRESHOLD = 3;
 	private static int counter;
 	private Resolution resolution;
 	
 	/**
-	 * 
-	 * @param summary
-	 * @param reporter
+	 * Identifies a problem in the software by creating a bug that
+	 * is added into the system and summarized by reporter. 
+	 * @param summary Brief description of bug
+	 * @param reporter Name of person reporting the bug
 	 */
 	public TrackedBug(String summary, String reporter) 
 	{
-		if(summary == null || summary == "" || reporter == "" || reporter == null)
+		if(summary == null || summary.equals("") || reporter.equals("") || reporter == null)
 		{
 			throw new IllegalArgumentException();
 		}
@@ -58,11 +68,13 @@ public class TrackedBug
 		this.confirmed = false;
 		this.notes = new ArrayList<String>();
 		resolution = null;
+		TrackedBug.incrementCounter();
 	}
 	
 	/**
-	 * 
-	 * @param z
+	 * Bug that is being tracked within the system that has 
+	 * more detailed descriptive note.
+	 * @param z Bug object 
 	 */
 	public TrackedBug(Bug z) 
 	{
@@ -80,10 +92,11 @@ public class TrackedBug
 		{
 			this.notes.add(z.getNoteList().getNote().get(i));
 		}
+		TrackedBug.incrementCounter();
 	}
 	
 	/**
-	 * 
+	 * Sums up the amount of tracked bugs.
 	 */
 	public static void incrementCounter() 
 	{
@@ -91,8 +104,8 @@ public class TrackedBug
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Gets bug's id.
+	 * @return bugId Current bug's id
 	 */
 	public int getBugId() 
 	{
@@ -109,41 +122,48 @@ public class TrackedBug
 	}
 	
 	/**
-	 * Helps with translating between string 
-	 * @param e
+	 * Helps with translating between name of bug state and state of bug.
+	 * @param e Name of bug's states
 	 */
 	private void setState(String e) 
 	{
-	//Help with translating between the BugState and Resolution objects and their string equivalents
-		if(e == UNCONFIRMED_NAME)
+		//Help with translating between the BugState and Resolution objects and their string equivalents
+		if(e != null)
 		{
-			this.state = unconfirmedState;
-		}
-		else if(e == NEW_NAME )
-		{
-			this.state = newState;
-		}
-		else if(e == ASSIGNED_NAME)
-		{
-			this.state = assignedState;
-		}
-		else if(e == RESOLVED_NAME)
-		{
-			this.state = resolvedState;
-		}
-		else if(e == REOPEN_NAME)
-		{
-			this.state = reopenState;
-		}
-		else if(e == CLOSED_NAME)
-		{
-			this.state = closedState;
+			if(e.equals(UNCONFIRMED_NAME))
+			{
+				this.state = unconfirmedState;
+			}
+			else if(e.equals(NEW_NAME) )
+			{
+				this.state = newState;
+			}
+			else if(e.equals(ASSIGNED_NAME))
+			{
+				this.state = assignedState;
+			}
+			else if(e.equals(RESOLVED_NAME))
+			{
+				this.state = resolvedState;
+			}
+			else if(e.equals(REOPEN_NAME))
+			{
+				this.state = reopenState;
+			}
+			else if(e.equals(CLOSED_NAME))
+			{
+				this.state = closedState;
+			}
+			else
+			{
+				throw new IllegalArgumentException();
+			}
 		}
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Gets bug's resolution.
+	 * @return resolution Current bug's resolution
 	 */
 	public Resolution getResolution() 
 	{
@@ -151,12 +171,12 @@ public class TrackedBug
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Gets bug's resolution in a string.
+	 * @return res Name of current bug's resolution
 	 */
 	public String getResolutionString() 
 	{
-		String res = "";
+		String res = null;
 		
 		if(resolution == Resolution.DUPLICATE)
 		{
@@ -178,32 +198,35 @@ public class TrackedBug
 	}
 	
 	/**
-	 * 
-	 * @param e
+	 * Helps with translating between name of bug's resolution and resolution of bug.
+	 * @param e Name of bug's resolution
 	 */
 	private void setResolution(String e) 
 	{	
-		if(e == Command.R_DUPLICATE)
+		if(e != null)
 		{
-			this.resolution = Resolution.DUPLICATE;
-		}
-		else if(e == Command.R_FIXED)
-		{
-			this.resolution = Resolution.FIXED;
-		}
-		else if(e == Command.R_WONTFIX)
-		{
-			this.resolution = Resolution.WONTFIX;
-		}
-		else if(e == Command.R_WORKSFORME)
-		{
-			this.resolution = Resolution.WORKSFORME;
+			if(e.equals(Command.R_DUPLICATE))
+			{
+				this.resolution = Resolution.DUPLICATE;
+			}
+			else if(e.equals(Command.R_FIXED))
+			{
+				this.resolution = Resolution.FIXED;
+			}
+			else if(e.equals(Command.R_WONTFIX))
+			{
+				this.resolution = Resolution.WONTFIX;
+			}
+			else if(e.equals(Command.R_WORKSFORME))
+			{
+				this.resolution = Resolution.WORKSFORME;
+			}
 		}
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Gets bug's assigned owner.
+	 * @return owner Owner assigned to fix bug
 	 */
 	public String getOwner() 
 	{
@@ -211,22 +234,26 @@ public class TrackedBug
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Gets bug's summary.
+	 * @return summary Details of the bug
 	 */
 	public String getSummary() 
 	{
 		return this.summary;
 	}
 	
+	/**
+	 * Gets bug's number of votes.
+	 * @return votes Number of people interested in fixing bug
+	 */
 	public int getVotes()
 	{
 		return votes;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Gets bug's reporter.
+	 * @return reporter Person who reported current bug
 	 */
 	public String getReporter() 
 	{
@@ -234,8 +261,8 @@ public class TrackedBug
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Gets bug's notes as a list.
+	 * @return notes Additional detail list of current bug
 	 */
 	public ArrayList<String> getNotes() 
 	{
@@ -243,8 +270,8 @@ public class TrackedBug
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Gets bug's notes as a string. 
+	 * @return note Additional detail of current bug
 	 */
 	public String getNotesString() 
 	{
@@ -258,8 +285,8 @@ public class TrackedBug
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Confirms bug into the tracking system.
+	 * @return confirmed Boolean true if bug is confirmed
 	 */
 	public boolean isConfirmed() 
 	{
@@ -267,69 +294,65 @@ public class TrackedBug
 	}
 	
 	/**
-	 * 
-	 * @param f
+	 * Updates state of bug.
+	 * @param c Command used to change state of bug
 	 */
 	public void update(Command c) 
 	{
 		this.getState().updateState(c);
-		if(c.getNote() != null && c.getNote() != "")
+		if(c.getNote() != null && c.getNote().equals(""))
 		{
 			notes.add(c.getNote());
 		}
 	}
 	
 	/**
-	 * 
-	 * @return bug
+	 * Gets bug and its information from XML file.
+	 * @return bug Bug from XML file
 	 */
 	public Bug getXMLBug() 
 	{
 		Bug bug = new Bug();
 		bug.setConfirmed(this.confirmed);
 		bug.setId(this.bugId);
-		if(owner != null)
-		{
-			bug.setOwner( this.getOwner());
-		}
+		bug.setOwner( this.getOwner());
 		bug.setReporter(this.getReporter());
-		if(resolution != null)
-		{
-			bug.setResolution(this.getResolutionString());
-		}
+		bug.setResolution(this.getResolutionString());
 		bug.setState(this.getState().getStateName());
 		bug.setSummary(this.getSummary());
 		bug.setVotes(this.votes);
+		bug.setNoteList(new NoteList());
 		bug.noteList.note = this.getNotes();
 		
 		return bug;
 	}
 	
 	/**
-	 * 
-	 * @param g
+	 * Sets counter for bug id number.
+	 * @param g Number of bug's id
 	 */
 	public static void setCounter(int g) 
 	{
-		counter = g;
+		TrackedBug.counter = g;
 	}
 	
 	/**
-	 * 
+	 * Unconfirmed State that a bug can transition into.
 	 */
 	private class UnconfirmedState implements BugState
 	{
 		/**
-		 * 
+		 * Updates the state of the bug with a command.
 		 */
 		@Override
 		public void updateState(Command c)
 		{
+			//FSM State Pattern
 			switch(c.getCommand())
 			{
 				case VOTE:
 				{
-					votes ++;
+					votes++;
 					if(votes >= VOTE_THRESHOLD)
 					{
 						if(getOwner() == null)
@@ -376,7 +399,7 @@ public class TrackedBug
 		}
 		
 		/**
-		 * 
+		 * Returns Unconfirmed State's name as string constant.
 		 */
 		@Override
 		public String getStateName()
@@ -386,19 +409,19 @@ public class TrackedBug
 	}
 	
 	/**
-	 * 
-	 * 
-	 *
+	 * New State that a bug can transition into.
 	 */
 	private class NewState implements BugState
 	{	
 		/**
-		 * 
+		 * Updates the state of the bug with a command.
 		 */
 		@Override
 		public void updateState(Command c)
 		{
-			switch(c.getCommand()){
+			//FSM State Pattern
+			switch(c.getCommand())
+			{
 				case VOTE:
 				{
 					throw new UnsupportedOperationException();
@@ -429,7 +452,7 @@ public class TrackedBug
 		}
 		
 		/**
-		 * 
+		 * Returns New State's name as string constant.
 		 */
 		@Override
 		public String getStateName()
@@ -439,18 +462,17 @@ public class TrackedBug
 	}
 	
 	/**
-	 * 
-	 * 
-	 *
+	 * Assigned State that a bug can transition into.
 	 */
 	private class AssignedState implements BugState
 	{	
 		/**
-		 * 
+		 * Updates the state of the bug with a command.
 		 */
 		@Override
 		public void updateState(Command c)
 		{
+			//FSM State Pattern
 			switch(c.getCommand()) 
 			{
 				case VOTE:
@@ -490,7 +512,7 @@ public class TrackedBug
 		}
 		
 		/**
-		 * 
+		 * Returns Assigned State's name as string constant.
 		 */
 		@Override
 		public String getStateName()
@@ -500,18 +522,17 @@ public class TrackedBug
 	}
 	
 	/**
-	 * 
-	 * 
-	 *
+	 * Resolved State that a bug can transition into.
 	 */
 	private class ResolvedState implements BugState
 	{	
 		/**
-		 * 
+		 * Updates the state of the bug with a command.
 		 */
 		@Override
 		public void updateState(Command c)
 		{
+			//FSM State Pattern
 			switch(c.getCommand())
 			{
 				case VOTE:
@@ -554,7 +575,7 @@ public class TrackedBug
 		}
 		
 		/**
-		 * 
+		 * Returns Resolved State's name as string constant.
 		 */
 		@Override
 		public String getStateName()
@@ -564,18 +585,17 @@ public class TrackedBug
 	}
 	
 	/**
-	 * 
-	 *  
-	 *
+	 * Closed State that a bug can transition into.
 	 */
 	private class ClosedState implements BugState
 	{
 		/**
-		 * 
+		 * Updates the state of the bug with a command.
 		 */
 		@Override
 		public void updateState(Command c)
 		{
+			//FSM State Pattern
 			switch(c.getCommand())
 			{
 				case VOTE:
@@ -615,7 +635,7 @@ public class TrackedBug
 		}
 		
 		/**
-		 * 
+		 * Returns Closed State's name as string constant.
 		 */
 		@Override
 		public String getStateName()
@@ -625,19 +645,18 @@ public class TrackedBug
 	}
 	
 	/**
-	 * 
-	 * 
-	 *
+	 * Reopen State that a bug can transition into.
 	 */
 	private class ReopenState implements BugState
 	{
 		
 		/**
-		 * 
+		 * Updates the state of the bug with a command.
 		 */
 		@Override
 		public void updateState(Command c)
 		{
+			//FSM State Pattern 
 			switch(c.getCommand())
 			{
 				case VOTE:
@@ -657,9 +676,7 @@ public class TrackedBug
 				}
 				case REOPEN:
 				{
-					resolution = null;
-					setState(UNCONFIRMED_NAME);
-					break;
+					throw new UnsupportedOperationException();
 				}
 				case RESOLVED:
 				{
@@ -682,7 +699,7 @@ public class TrackedBug
 		}
 		
 		/**
-		 * 
+		 * Returns Reopen State's name as string constant.
 		 */
 		@Override
 		public String getStateName()

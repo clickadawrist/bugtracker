@@ -16,7 +16,13 @@ public class BugTrackerModelTest {
 	BugTrackerModel tracker;
 	//do I need the following: private static BugTrackerModel model; ?
 	
+	BugList one;
+	BugList two;
+	BugTrackerModel a;
+	
 	/**
+	 * Set up bugs here to help testing with bug tracker model?
+	 * 
 	 * @throws java.lang.Exception
 	 */
 	@Before
@@ -43,13 +49,17 @@ public class BugTrackerModelTest {
 	@Test
 	public void testSaveBugsToFile() {
 		/*
-		BugWriter writer = new BugWriter(file);
+		BugWriter writer = new BugWriter(one);
 		for(int i = 0; i < bugs.getBugs().size(); i++)
 		{
+			assertEquals(one, two)
 			writer.addItem(bugs.getBugs().get(i).getXMLBug());
 		}
 		*/
 		//Test this method.
+		BugList hugs = new BugList();
+		
+		
 		
 	}
 

@@ -7,10 +7,14 @@ package edu.ncsu.csc216.bug_tracker.command;
 public class Command {
 	
 	//Translates resolution to it's string constant name equivalent.
-	public static final String R_FIXED = Resolution.FIXED.toString();
-	public static final String R_DUPLICATE = Resolution.DUPLICATE.toString();
-	public static final String R_WONTFIX = Resolution.WONTFIX.toString();
-	public static final String R_WORKSFORME = Resolution.WORKSFORME.toString();
+	/** Name of fixed resolution for bug. */
+	public static final String R_FIXED = "Fixed";
+	/** Name of duplicate resolution for bug. */
+	public static final String R_DUPLICATE = "Duplicate";
+	/** Name of wont-fix resolution for bug. */
+	public static final String R_WONTFIX = "WontFix";
+	/** Name of works-for-me-resolution for bug. */
+	public static final String R_WORKSFORME = "WorksForMe";
 	private String developerId;
 	private String note;
 	
@@ -22,7 +26,7 @@ public class Command {
 	/**
 	 * Encapsulates user actions, user information and bug information into a command object.
 	 * @param c Command value for the bug 
-	 * @param developer's id Id of the developer
+	 * @param developerId Id of the developer
 	 * @param resolution Resolution of the bug
 	 * @param note Note for the bug
 	 * @throws IllegalArgumentException if command value is null, if command
@@ -41,7 +45,7 @@ public class Command {
 			throw new IllegalArgumentException();
 		}
 		
-		if(c == CommandValue.POSSESSION && developerId == null || developerId == "")
+		if(c == CommandValue.POSSESSION && developerId == null || developerId.equals(""))
 		{
 			throw new IllegalArgumentException();
 		}
@@ -58,7 +62,18 @@ public class Command {
 	 */
 	public static enum CommandValue 
 	{ 
-		VOTE, POSSESSION, RESOLVED, VERIFIED, REOPEN, CONFIRM	
+		/** Users voted for the investigation of possible bug. */
+		VOTE, 
+		/** User is assigned the bug. */
+		POSSESSION, 
+		/** User attaches a fix to the bug. */
+		RESOLVED, 
+		/** User verifies the bug is fixed in resolved state. */
+		VERIFIED, 
+		/** Users have remove resolution and reopen the bug to fix it. */
+		REOPEN, 
+		/** Users have confirmed there is a bug and place it into the bug tracking system. */
+		CONFIRM	
 	}
 	
 	/**
@@ -67,7 +82,14 @@ public class Command {
 	 */
 	public static enum Resolution 
 	{ 
-		FIXED, DUPLICATE, WONTFIX, WORKSFORME 
+		/** The bug has been fixed and the owner has tested the fix. */
+		FIXED,
+		/** The reported bug is a duplicate of another bug in the system. */
+		DUPLICATE,
+		/** The owner won't fix the bug. */
+		WONTFIX,
+		/** The owner of the bug cannot replicate the problem. */
+		WORKSFORME 
 	}
 		
 	/**

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package edu.ncsu.csc216.bug_tracker.command;
 
 import static org.junit.Assert.*;
@@ -12,29 +9,41 @@ import edu.ncsu.csc216.bug_tracker.command.Command.CommandValue;
 import edu.ncsu.csc216.bug_tracker.command.Command.Resolution;
 
 /**
- * @author tmanthawk
- *
+ * Tests Command class.
+ * @author Paul Hawkins
  */
 public class CommandTest {
 
-	private Command c;
+	Command c;
+	/*Command c1;
+	Command c2;
+	Command c3;
+	Command c4;
+	*/
+	//Private Command com?
+	
 	/**
-	 * @throws java.lang.Exception
+	 * Sets up command object to test. 
 	 */
 	@Before
 	public void setUp() throws Exception {
 		c = new Command(CommandValue.CONFIRM, "devID", Resolution.DUPLICATE, "notes");
+	/*	c1 = new Command(CommandValue.POSSESSION, "", Resolution.FIXED, "");
+		c2 = new Command(CommandValue.REOPEN, "", Resolution.WONTFIX, "");
+		c3 = new Command(CommandValue.RESOLVED, "", Resolution.WORKSFORME, "");
+		c4 = new Command(CommandValue.VERIFIED, "", Resolution.DUPLICATE, "");
+	*/
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.command.Command#Command(edu.ncsu.csc216.bug_tracker.command.Command.CommandValue, java.lang.String, edu.ncsu.csc216.bug_tracker.command.Command.Resolution, java.lang.String)}.
+	 * Tests Command method.
 	 */
 	@Test
 	public void testCommand() 
 	{
 		try
 		{
-			Command com = new Command(null,null,null,null);
+			c = new Command(null,null,null,null);
 			fail();
 		}
 		catch(IllegalArgumentException e)
@@ -44,7 +53,7 @@ public class CommandTest {
 		
 		try
 		{
-			Command com = new Command(CommandValue.RESOLVED,null,null,null);
+			c = new Command(CommandValue.RESOLVED,null,null,null);
 			fail();
 		}
 		catch(IllegalArgumentException e)
@@ -54,7 +63,7 @@ public class CommandTest {
 		
 		try
 		{
-			Command com = new Command(CommandValue.POSSESSION,null,null,null);
+			c = new Command(CommandValue.POSSESSION,null,null,null);
 			fail();
 		}
 		catch(IllegalArgumentException e)
@@ -84,35 +93,38 @@ public class CommandTest {
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.command.Command#getCommand()}.
+	 * Tests getCommand method.
 	 */
 	@Test
-	public void testGetCommand() {
+	public void testGetCommand() 
+	{
 		assertEquals(c.getCommand(), CommandValue.CONFIRM);
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.command.Command#getDeveloperId()}.
+	 * Tests getDeveloperId method.
 	 */
 	@Test
-	public void testGetDeveloperId() {
+	public void testGetDeveloperId() 
+	{
 		assertEquals(c.getDeveloperId(), "devID");
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.command.Command#getResolution()}.
+	 * Test getResolution method.
 	 */
 	@Test
-	public void testGetResolution() {
+	public void testGetResolution() 
+	{
 		assertEquals(c.getResolution(), Resolution.DUPLICATE);
 	}
 
 	/**
-	 * Test method for {@link edu.ncsu.csc216.bug_tracker.command.Command#getNote()}.
+	 * Tests getNotes method.
 	 */
 	@Test
-	public void testGetNote() {
+	public void testGetNote() 
+	{
 		assertEquals(c.getNote(), "notes");
 	}
-
 }
