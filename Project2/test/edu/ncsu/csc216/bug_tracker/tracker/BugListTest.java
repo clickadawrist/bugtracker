@@ -67,7 +67,7 @@ public class BugListTest {
 	public void testGetBugs() {
 		bugs.addBug("summary", "reporter");
 		
-		assertEquals("summary",bugs.getBugs().get(0).getSummary());
+		assertEquals("summary", bugs.getBugs().get(0).getSummary());
 	}
 
 	/**
@@ -76,14 +76,14 @@ public class BugListTest {
 	@Test
 	public void testGetBugsByOwner() {
 		bugs.addBug("summary", "reporter");
-		bugs.getBugs().get(0).update(new Command(CommandValue.CONFIRM,null,null,null));
-		bugs.getBugs().get(0).update(new Command(CommandValue.POSSESSION,"Traemani",null,null));
+		bugs.getBugs().get(0).update(new Command(CommandValue.CONFIRM, null, null, null));
+		bugs.getBugs().get(0).update(new Command(CommandValue.POSSESSION,"Traemani", null, null));
 		bugs.addBug("summar", "reporte");
-		bugs.getBugs().get(1).update(new Command(CommandValue.CONFIRM,null,null,null));
-		bugs.getBugs().get(1).update(new Command(CommandValue.POSSESSION,"Traemani",null,null));
+		bugs.getBugs().get(1).update(new Command(CommandValue.CONFIRM,null, null, null));
+		bugs.getBugs().get(1).update(new Command(CommandValue.POSSESSION,"Traemani", null, null));
 		bugs.addBug("summa", "report");
-		bugs.getBugs().get(2).update(new Command(CommandValue.CONFIRM,null,null,null));
-		bugs.getBugs().get(2).update(new Command(CommandValue.POSSESSION,"Manaka",null,null));
+		bugs.getBugs().get(2).update(new Command(CommandValue.CONFIRM,null, null, null));
+		bugs.getBugs().get(2).update(new Command(CommandValue.POSSESSION,"Manaka", null, null));
 		
 		List<TrackedBug> list = new ArrayList<TrackedBug>();
 		list.add(bugs.getBugs().get(0));
@@ -115,17 +115,17 @@ public class BugListTest {
 	@Test
 	public void testExecuteCommand() {
 		bugs.addBug("summary", "reporter");
-		bugs.executeCommand(0, new Command(CommandValue.VOTE,null,null,null));
+		bugs.executeCommand(0, new Command(CommandValue.VOTE,null, null, null));
 		assertEquals("Unconfirmed", bugs.getBugById(0).getState().getStateName());
-		bugs.executeCommand(0, new Command(CommandValue.CONFIRM,null,null,null));
+		bugs.executeCommand(0, new Command(CommandValue.CONFIRM, null, null, null));
 		assertEquals("New", bugs.getBugById(0).getState().getStateName());
-		bugs.executeCommand(0, new Command(CommandValue.POSSESSION,"Traemani",null,null));
+		bugs.executeCommand(0, new Command(CommandValue.POSSESSION,"Traemani", null, null));
 		assertEquals("Assigned", bugs.getBugById(0).getState().getStateName());
-		bugs.executeCommand(0, new Command(CommandValue.RESOLVED,null,Resolution.FIXED,null));
+		bugs.executeCommand(0, new Command(CommandValue.RESOLVED, null, Resolution.FIXED, null));
 		assertEquals("Resolved", bugs.getBugById(0).getState().getStateName());
-		bugs.executeCommand(0, new Command(CommandValue.VERIFIED,null,null,null));
+		bugs.executeCommand(0, new Command(CommandValue.VERIFIED, null, null, null));
 		assertEquals("Closed", bugs.getBugById(0).getState().getStateName());
-		bugs.executeCommand(0, new Command(CommandValue.REOPEN,null,null,null));
+		bugs.executeCommand(0, new Command(CommandValue.REOPEN, null, null, null));
 		assertEquals("Reopen", bugs.getBugById(0).getState().getStateName());
 	}
 

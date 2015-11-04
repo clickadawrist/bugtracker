@@ -26,8 +26,8 @@ public class BugTrackerModel {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * returns the singleton
+	 * @return model the singleton
 	 */
 	public static BugTrackerModel getInstance()
 	{
@@ -39,8 +39,8 @@ public class BugTrackerModel {
 	}
 	
 	/**
-	 * 
-	 * @param file
+	 * Saves the bugs to an XML file
+	 * @param file The string for the file to be saved to
 	 */
 	public void saveBugsToFile(String file)
 	{
@@ -52,8 +52,8 @@ public class BugTrackerModel {
 	}
 	
 	/**
-	 * 
-	 * @param file
+	 * Loads the bugs from an XML file
+	 * @param file The string for the file to load from
 	 */
 	public void loadBugsFromFile(String file)
 	{
@@ -69,7 +69,7 @@ public class BugTrackerModel {
 	}
 	
 	/**
-	 * 
+	 * Creates a new bug list
 	 */
 	public void createNewBugList()
 	{
@@ -77,8 +77,8 @@ public class BugTrackerModel {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Converts the bug list into a 2D array for the gui to read
+	 * @return listAsArray The converted bug list in 2D array form
 	 */
 	public Object[][] getBugListAsArray()
 	{
@@ -94,9 +94,9 @@ public class BugTrackerModel {
 	}
 	
 	/**
-	 * 
-	 * @param owner
-	 * @return
+	 * Converts the bug list into a 2D array by owner for the gui to read
+	 * @param owner the owner to filter the list by
+	 * @return listAsArray the converted bug list
 	 */
 	public Object[][] getBugListByOwnerAsArray(String owner)
 	{
@@ -105,7 +105,17 @@ public class BugTrackerModel {
 			throw new IllegalArgumentException();
 		}
 		
-		Object [][] listAsArray =  new Object[bugs.getBugs().size()][3];
+		int rows = 0;
+		
+		for(int i = 0; i < bugs.getBugs().size(); i++)
+		{
+			if(bugs.getBugs().get(i).getOwner() == owner)
+			{
+				rows++;
+			}
+		}
+		
+		Object [][] listAsArray =  new Object[rows][3];
 		for(int i = 0; i < bugs.getBugs().size(); i++)
 		{
 			if(bugs.getBugs().get(i).getOwner() == owner)
@@ -120,9 +130,9 @@ public class BugTrackerModel {
 	}
 	
 	/**
-	 * 
-	 * @param id
-	 * @return
+	 * Returns the bug that has the same ID as the parameter passed in
+	 * @param id the id of the bug the user wants to get
+	 * @return bug.getBugById(id) the bug with the parameter as its id
 	 */
 	public TrackedBug getBugById(int id)
 	{
@@ -130,18 +140,18 @@ public class BugTrackerModel {
 	}
 	
 	/**
-	 * 
-	 * @param id
-	 * @param c
+	 * Runs the passed in command to the bug of the passed in id
+	 * @param id the bug the user wants to run the command on
+	 * @param c the command that the user wants to run on the bug
 	 */
-	public void executeCommand(int id,Command c)
+	public void executeCommand(int id, Command c)
 	{
 		bugs.executeCommand(id, c);
 	}
 	
 	/**
-	 * 
-	 * @param id
+	 * Deletes the bug of the passed in id
+	 * @param id the bug the user wants to delete
 	 */
 	public void deleteBugById(int id)
 	{
@@ -149,7 +159,7 @@ public class BugTrackerModel {
 	}
 	
 	/**
-	 * 
+	 * adds a new bug to the bug list
 	 * @param summary Brief description of bug
 	 * @param reporter Name of person reporting the bug
 	 */
