@@ -2,9 +2,16 @@ package edu.ncsu.csc216.bug_tracker.tracker;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.ncsu.csc216.bug_tracker.bug.TrackedBug;
+import edu.ncsu.csc216.bug_tracker.xml.Bug;
+import edu.ncsu.csc216.bug_tracker.xml.BugReader;
 import edu.ncsu.csc216.bug_tracker.xml.BugWriter;
 
 /**
@@ -14,8 +21,10 @@ import edu.ncsu.csc216.bug_tracker.xml.BugWriter;
 public class BugTrackerModelTest {
 
 	BugTrackerModel tracker;
+	BugList bugList;
 	//do I need the following: private static BugTrackerModel model; ?
 	
+	Bug b;
 	BugList one;
 	BugList two;
 	BugTrackerModel a;
@@ -28,6 +37,16 @@ public class BugTrackerModelTest {
 	@Before
 	public void setUp() throws Exception {
 		tracker = BugTrackerModel.getInstance();
+//		bugList = new BugList();
+//		bugList.addBug("This bug is killing everyone", "Paul");
+//		bugList.addBug("This bug is eating everyone", "Manaka");
+//		bugList.addBug("This bug is paying everyone", "Trae");
+//		bugList.addBug("This bug is failing everyone", "Stevie");
+//		bugList.addBug("This bug is catching everyone", "James");
+//		bugList.addBug("This bug is loving everyone", "Jason");
+		b = new Bug();
+		b.summary = "This bug is loving everyone";
+		b.reporter = "Jason";
 	}
 
 	/**
@@ -35,6 +54,7 @@ public class BugTrackerModelTest {
 	 */
 	@Test
 	public void testGetInstance() {
+		assertNotNull(tracker);
 	//assertEquals(double expected, double actual)
 	//How do you test this method??
 		try{
@@ -48,6 +68,12 @@ public class BugTrackerModelTest {
 	 */
 	@Test
 	public void testSaveBugsToFile() {
+		BugWriter writer = new BugWriter("save_bugs.xml");
+		writer.addItem(b);
+//		List<TrackedBug> bList = bugList.getBugs();
+//		for (int i = 0; i < bList.size(); i++) {
+//			writer.addItem(b);
+//		}
 		/*
 		BugWriter writer = new BugWriter(one);
 		for(int i = 0; i < bugs.getBugs().size(); i++)
@@ -57,7 +83,7 @@ public class BugTrackerModelTest {
 		}
 		*/
 		//Test this method.
-		BugList hugs = new BugList();
+		//BugList hugs = new BugList();
 		
 		
 		
@@ -69,6 +95,7 @@ public class BugTrackerModelTest {
 	@Test
 	public void testLoadBugsFromFile() {
 		//fail("Not yet implemented");
+		BugReader bugReader = new BugReader("save_bugs.xml");
 	}
 
 	/**

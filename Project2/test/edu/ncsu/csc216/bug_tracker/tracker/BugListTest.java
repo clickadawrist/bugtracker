@@ -1,6 +1,3 @@
-/**
- * 
- */
 package edu.ncsu.csc216.bug_tracker.tracker;
 
 import static org.junit.Assert.*;
@@ -18,7 +15,8 @@ import edu.ncsu.csc216.bug_tracker.command.Command.Resolution;
 import edu.ncsu.csc216.bug_tracker.xml.Bug;
 
 /**
- * @author tmanthawk
+ * Tests BugList class.
+ * @author Paul Hawkins
  *
  */
 public class BugListTest {
@@ -48,16 +46,17 @@ public class BugListTest {
 	 */
 	@Test
 	public void testAddXMLBug() {
-//		List<Bug> temp = new ArrayList<Bug>();
-//		Bug bug = new Bug();
-//		Bug bug1 = new Bug();
-//		Bug bug2 = new Bug();
-//		temp.add(bug);
-//		temp.add(bug1);
-//		temp.add(bug2);
-//		
-//		bugs.addXMLBugs(temp);
-//		assertEquals(3, bugs.getBugs().size());
+		List<Bug> temp = new ArrayList<Bug>();
+		Bug bug = new Bug();
+		Bug bug1 = new Bug();
+		Bug bug2 = new Bug();
+		temp.add(bug);
+		temp.add(bug1);
+		temp.add(bug2);
+		
+		bugs.addXMLBugs(temp);
+		assertEquals(3, bugs.getBugs().size());
+		
 	}
 
 	/**

@@ -1,11 +1,7 @@
-/**
- * 
- */
 package edu.ncsu.csc216.bug_tracker.bug;
 
 import static org.junit.Assert.*;
 
-import java.awt.List;
 import java.util.ArrayList;
 
 import org.junit.Before;
@@ -15,10 +11,10 @@ import edu.ncsu.csc216.bug_tracker.command.Command;
 import edu.ncsu.csc216.bug_tracker.command.Command.CommandValue;
 import edu.ncsu.csc216.bug_tracker.command.Command.Resolution;
 import edu.ncsu.csc216.bug_tracker.xml.Bug;
-import edu.ncsu.csc216.bug_tracker.xml.NoteList;
 
 /**
- * @author tmanthawk
+ * Tests TrackedBug class.
+ * @author Paul Hawkins
  *
  */
 public class TrackedBugTest {
@@ -29,8 +25,10 @@ public class TrackedBugTest {
 	TrackedBug bug3;
 	TrackedBug bug4;
 	TrackedBug bug5;
+	
 	/**
-	 * @throws java.lang.Exception
+	 * Sets up test. 
+	 * @throws Exception 
 	 */
 	@Before
 	public void setUp() throws Exception {
@@ -50,22 +48,24 @@ public class TrackedBugTest {
 	public void testTrackedBug() {
 		try
 		{
-			TrackedBug b = new TrackedBug("","adsfga");
+			@SuppressWarnings("unused")
+			TrackedBug b = new TrackedBug("", "adsfga");
 			fail();
 		}
 		catch(IllegalArgumentException e)
 		{
-			assertEquals(e,e);
+			assertEquals(e, e);
 		}
 		
 		try
 		{
-			TrackedBug b = new TrackedBug("adsfga","");
+			@SuppressWarnings("unused")
+			TrackedBug b = new TrackedBug("adsfga", "");
 			fail();
 		}
 		catch(IllegalArgumentException e)
 		{
-			assertEquals(e,e);
+			assertEquals(e, e);
 		}
 		
 		TrackedBug.setCounter(0);
@@ -117,7 +117,7 @@ public class TrackedBugTest {
 		assertEquals(null, bug.getResolution());
 		bug.update(new Command(CommandValue.CONFIRM, null, null, null));
 		bug.update(new Command(CommandValue.POSSESSION, "Traemani", null, null));
-		bug.update(new Command(CommandValue.RESOLVED,null,Resolution.DUPLICATE,null));
+		bug.update(new Command(CommandValue.RESOLVED, null, Resolution.DUPLICATE, null));
 		assertEquals(Resolution.DUPLICATE, bug.getResolution());
 	}
 
@@ -128,22 +128,22 @@ public class TrackedBugTest {
 	public void testGetResolutionString() {
 		bug.update(new Command(CommandValue.CONFIRM, null, null, null));
 		bug.update(new Command(CommandValue.POSSESSION, "Traemani", null, null));
-		bug.update(new Command(CommandValue.RESOLVED,null,Resolution.DUPLICATE,null));
+		bug.update(new Command(CommandValue.RESOLVED, null, Resolution.DUPLICATE, null));
 		assertEquals("Duplicate", bug.getResolutionString());
 		
 		bug1.update(new Command(CommandValue.CONFIRM, null, null, null));
 		bug1.update(new Command(CommandValue.POSSESSION, "Traemani", null, null));
-		bug1.update(new Command(CommandValue.RESOLVED,null,Resolution.FIXED,null));
+		bug1.update(new Command(CommandValue.RESOLVED, null, Resolution.FIXED, null));
 		assertEquals("Fixed", bug1.getResolutionString());
 		
 		bug2.update(new Command(CommandValue.CONFIRM, null, null, null));
 		bug2.update(new Command(CommandValue.POSSESSION, "Traemani", null, null));
-		bug2.update(new Command(CommandValue.RESOLVED,null,Resolution.WONTFIX,null));
+		bug2.update(new Command(CommandValue.RESOLVED, null, Resolution.WONTFIX, null));
 		assertEquals("WontFix", bug2.getResolutionString());
 		
 		bug3.update(new Command(CommandValue.CONFIRM, null, null, null));
 		bug3.update(new Command(CommandValue.POSSESSION, "Traemani", null, null));
-		bug3.update(new Command(CommandValue.RESOLVED,null,Resolution.WORKSFORME,null));
+		bug3.update(new Command(CommandValue.RESOLVED, null, Resolution.WORKSFORME, null));
 		assertEquals("WorksForMe", bug3.getResolutionString());
 	}
 
@@ -299,7 +299,7 @@ public class TrackedBugTest {
 			assertEquals("Unconfirmed", bug2.getState().getStateName());
 		}
 		
-		bug2.update(new Command(CommandValue.CONFIRM,null,null,null));
+		bug2.update(new Command(CommandValue.CONFIRM, null, null, null));
 		
 		try
 		{
@@ -351,7 +351,7 @@ public class TrackedBugTest {
 			assertEquals("New", bug2.getState().getStateName());
 		}
 		
-		bug2.update(new Command(CommandValue.POSSESSION, "Traemani", null,null));
+		bug2.update(new Command(CommandValue.POSSESSION, "Traemani", null, null));
 		
 		try
 		{
@@ -403,7 +403,7 @@ public class TrackedBugTest {
 			assertEquals("Assigned", bug2.getState().getStateName());
 		}
 		
-		bug2.update(new Command(CommandValue.RESOLVED,null,Resolution.FIXED,null));
+		bug2.update(new Command(CommandValue.RESOLVED, null, Resolution.FIXED, null));
 		
 		try
 		{
@@ -445,7 +445,7 @@ public class TrackedBugTest {
 			assertEquals("Resolved", bug2.getState().getStateName());
 		}
 		
-		bug2.update(new Command(CommandValue.VERIFIED,null,null,null));
+		bug2.update(new Command(CommandValue.VERIFIED, null, null, null));
 		
 		try
 		{
@@ -497,7 +497,7 @@ public class TrackedBugTest {
 			assertEquals("Closed", bug2.getState().getStateName());
 		}
 		
-		bug2.update(new Command(CommandValue.REOPEN,null,null,null));
+		bug2.update(new Command(CommandValue.REOPEN, null, null, null));
 		
 		try
 		{
@@ -558,7 +558,7 @@ public class TrackedBugTest {
 		
 		bug.update(new Command(CommandValue.CONFIRM, null, null, "note 1"));
 		bug.update(new Command(CommandValue.POSSESSION, "Traemani", null, "note 2"));
-		bug.update(new Command(CommandValue.RESOLVED,null,Resolution.DUPLICATE,null));
+		bug.update(new Command(CommandValue.RESOLVED, null, Resolution.DUPLICATE, null));
 		
 		buggy = bug.getXMLBug();
 		assertEquals(0, buggy.getId());
@@ -573,4 +573,9 @@ public class TrackedBugTest {
 		
 	}
 
+	
+//	@Test
+//	public void testAddXMLBug() {
+//		BugReader bug = new BugReader("bug.xml");
+//	}
 }
