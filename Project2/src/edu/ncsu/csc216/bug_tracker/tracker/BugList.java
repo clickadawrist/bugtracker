@@ -36,7 +36,6 @@ public class BugList {
 	{
 		TrackedBug temp = new TrackedBug(summary, reporter);
 		bugs.add(temp);
-		//TrackedBug.incrementCounter();
 		return temp.getBugId();
 	}
 	

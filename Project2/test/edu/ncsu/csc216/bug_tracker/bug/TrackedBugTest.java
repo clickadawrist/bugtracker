@@ -674,10 +674,4 @@ public class TrackedBugTest {
 		assertEquals(1, buggy.getVotes());
 		
 	}
-
-	
-//	@Test
-//	public void testAddXMLBug() {
-//		BugReader bug = new BugReader("bug.xml");
-//	}
 }
